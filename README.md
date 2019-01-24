@@ -9,6 +9,7 @@ Planned Functionality:
 - Ability to sort by header
 - Guide to choosing decklists
 - Clearer guidelines on how deck admission works
+- Accordions to be more space-efficient
 
 Potential Additions:
 - "Data" page with graphs
