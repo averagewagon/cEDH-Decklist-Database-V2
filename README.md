@@ -10,7 +10,6 @@ Planned Functionality:
 - Guide to choosing decklists
 - Clearer guidelines on how deck admission works
 - Accordions to be more space-efficient
-
-Potential Additions:
-- "Data" page with graphs
 - Multiple decklists for the same deck
+- MORE PRETTIER
+- Embedded Submission Form
