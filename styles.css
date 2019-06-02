@@ -1,0 +1,35 @@
+/*
+  Github Username - AverageDragon
+  6/2/2019
+
+  The stylesheet which complements the bootstrap pre-compiled stylesheet.
+  styles.css controls the appearance of the webpage, as well as the
+  formatting of each listing's information.
+*/
+body {
+  width: 70%;
+  margin: 0 auto;
+}
+
+
+#logo {
+  width: 305px;
+}
+
+#logo img {
+  width: 14%;
+  margin-right: 20px;
+}
+
+.navbar-text {
+  width: 230px;
+  text-align: right;
+}
+
+.navbar-text a {
+  font-size: 16pt;
+}
+.navbar-text img {
+  margin-left: 20px;
+  width: 22%;
+}
