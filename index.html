@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <!--
-
-  The landing webpage for the Decklist Database.
+  Github Username - AverageDragon
+  6/2/2019
+  The "primary" webpage for the Decklist Database.
 -->
 <html lang="en">
   <head>
@@ -24,16 +25,13 @@
       crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="styles.css" />
-    <script src="main.js"></script>
+    <script src="cddb.js"></script>
     <link rel="icon" type="image/ico" href="img/favicon.ico">
   </head>
 
   <body>
     <div id="wrapper">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbar">
           <a class="navbar-brand" href="#" id="logo">
             <img src="img/phy.png">
@@ -52,9 +50,6 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Resources</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Submit a List</a>
-            </li>
           </ul>
           <span class="navbar-text">
             <a href="https://discord.gg/BXPyu2P" target="_blank">
@@ -65,7 +60,7 @@
       </nav>
 
       <main>
-        <div class="desc">
+        <div id="dbinfo">
           <p>
             This is a description of the various parts of the database.
             It tells people who are new to the database what each column means,
@@ -75,54 +70,103 @@
             commanders. You can also filter lists to ones that contain colors,
             a strategy, or if a list has a primer.
           </p>
-        </div>
-
-        <div class="database">
-
-          <div class="card">
-            <div class="card-header" id="headingOne" data-toggle="collapse"
-            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              <h5 class="mb-0">
-                Collapsible Group Item #1
-              </h5>
-            </div>
-
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-              <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-header" id="headingTwo">
-              <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Collapsible Group Item #2
-                </button>
-              </h5>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-              <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header" id="headingThree">
-              <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  Collapsible Group Item #3
-                </button>
-              </h5>
-            </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-              <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-              </div>
-            </div>
+          <div id="searchform">
+            <input class="form-control form-control-lg" type="text" placeholder="Search Database..." id="searchtext" autocomplete="off">
+            <button id="search" type="button" class="btn btn-success">Search</button>
           </div>
         </div>
+
+        <table id="database" class="table table-active table-hover table-striped">
+          <thead class="thead-dark">
+            <th><button id="colors" type="button" class="btn btn-secondary chosensort">Colors</button></th>
+            <th><button id="strategies"type="button" class="btn btn-primary">Strategy</button></th>
+            <th><button id="commanders"type="button" class="btn btn-primary">Commander(s)</button></th>
+            <th><button id="decknames" type="button" class="btn btn-primary">Deck Name</button></th>
+          </thead>
+          <tbody id="entries">
+            <tr data-toggle="collapse" data-target="#sub1" class="clickable entry">
+              <td class="colors">
+                <img src="img/mana/u.png" alt="w">
+                <img src="img/mana/b.png" alt="u">
+                <img src="img/mana/r.png" alt="b">
+                <img src="img/mana/blank.png" alt="blank">
+                <img src="img/mana/blank.png" alt="blank">
+              </td>
+              <td class="strategy">Midrange</td>
+              <td class="commander">Kess, Dissident Mage</td>
+              <td class="deckname">Grixis Consultation</td>
+            </tr>
+            <tr class="info table-secondary">
+              <td colspan="4">
+                <div id="sub1" class="collapse sub">
+                  <div class=upper>
+                    <div class="description">
+                      <h4>Grixis Consultation</h4>
+                      <hr>
+                      <p>
+                        This is the deck description. It's very descriptiony, with
+                        lots of descriptive elements inside of it. In fact, afterwards,
+                        I bet you too could make a description of this deck, just by
+                        copying this one! It's truly a crazy description, to be frank.
+                      </p>
+                    </div>
+                    <div class="decklists">
+                      <a href="http://tappedout.net/mtg-decks/grixis-consultation/"
+                        target="_blank"
+                        class="suggested">
+                        Suggested Decklist [P]
+                      </a>
+                      <hr>
+                      <a href="http://tappedout.net/mtg-decks/grixis-consultation/"
+                        target="_blank"
+                        class="alt">
+                        Alternate List
+                      </a>
+                      <a href="http://tappedout.net/mtg-decks/grixis-consultation/"
+                        target="_blank"
+                        class="alt">
+                        Alternate List
+                      </a>
+                    </div>
+                    <div class="discord">
+                      <a href="https://discord.gg/BXPyu2P" target="_blank">
+                        <img src="img/discord.png" alt="Discord Image">
+                        <p>Discord Server</p>
+                      </a>
+                      <a href="https://discord.gg/BXPyu2P" target="_blank" class="alt">
+                        <hr>
+                        <p>Alternate</p>
+                      </a>
+                    </div>
+                  </div>
+                  <hr>
+                  <p class="curators">AverageDragon, Average Dragon, Average_Dragon</p>
+                </div>
+              </td>
+            </tr>
+
+            <tr data-toggle="collapse" data-target="#sub2" class="clickable entry">
+              <td class="colors">
+                <img src="img/mana/w.png" alt="w">
+                <img src="img/mana/u.png" alt="u">
+                <img src="img/mana/b.png" alt="b">
+                <img src="img/mana/blank.png" alt="blank">
+                <img src="img/mana/blank.png" alt="blank">
+              </td>
+              <td class="strategy">Midrange</td>
+              <td class="commander">Zur the Enchanter</td>
+              <td class="deckname">Zuran Consultation</td>
+            </tr>
+            <tr class="info">
+              <td colspan="4">
+                  <div id="sub2" class="collapse sub">
+                    <p>Hidden by default</p>
+                    <p>Hidden by default</p>
+                  </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </main>
     </div>
   </body>

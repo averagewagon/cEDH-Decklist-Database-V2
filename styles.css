@@ -7,13 +7,19 @@
 
   font-family: 'B612 Mono', monospace;
 */
+
+/* Body/Nav Styles */
 body {
   width: 65%;
   margin: 0 auto;
 }
 
 nav {
-  min-width: 1000px;
+  min-width: 840px;
+}
+
+#navbar {
+  display: block;
 }
 
 #logo {
@@ -39,16 +45,139 @@ nav {
   width: 22%;
 }
 
-#wrapper {
-}
-
-.desc {
+/* Database Styles */
+#dbinfo {
   margin-top: 20px;
 }
-.database {
+
+#searchform {
+  display: flex;
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+
+#searchform input {
+  margin-right: 10px;
+}
+
+#database {
   font-family: 'IBM Plex Mono', monospace;
 }
 
-.database button {
+#database thead button {
   width: 100%;
+  text-align: left !important;
+  font-weight: bold !important;
+}
+
+.primer {
+  text-align: center;
+}
+
+/* Database entry row */
+.entry {
+  border: 2px solid black;
+  color: white;
+  font-size: 12pt;
+}
+
+.entry:hover {
+  cursor: pointer;
+}
+
+.colors {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-top: none !important;
+}
+
+.colors img {
+  height: 25px;
+}
+
+/* Database info row */
+.info {
+  /*display: none;
+  uncomment when Javascript*/
+}
+
+.info td {
+  background-color: #525559 !important;
+}
+
+.sub {
+  color: #fff;
+}
+
+.sub hr {
+  background-color: lightgray;
+}
+
+.upper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: stretch;
+}
+
+.upper > div {
+  padding: 20px;
+}
+
+.description {
+  width: 50%;
+}
+
+.decklists {
+  width: 25%;
+  border: 2px solid black;
+  background-color: lightgray;
+}
+
+.decklists a {
+  display: block;
+  border: 2px solid white;
+  padding: 4px;
+  text-align: center;
+}
+
+.suggested {
+  font-weight: bold;
+  font-size: 12pt;
+  color: darkblue;
+}
+
+.decklists .alt {
+  color: black;
+  font-size: 12pt;
+  font-style: italic;
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.discord {
+  width: 25%;
+  text-align: center;
+  background-color: gray;
+  border: 2px solid black;
+  border-left: none;
+}
+
+.discord img {
+  width: 50%;
+}
+
+.discord p {
+  font-size: 16pt;
+  font-weight: bold;
+}
+
+.discord .alt {
+  color: black;
+  font-style: italic;
+}
+
+.curators {
+  text-align: right;
+  font-size: 14pt;
 }
