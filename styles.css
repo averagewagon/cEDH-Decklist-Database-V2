@@ -8,6 +8,11 @@
   font-family: 'B612 Mono', monospace;
 */
 
+/* Generic */
+.hidden {
+  display: none;
+}
+
 /* Body/Nav Styles */
 body {
   width: 65%;
@@ -75,6 +80,18 @@ nav {
   font-size: 14pt;
 }
 
+#clr {
+  width: 18%;
+}
+
+#strt {
+  width: 15%;
+}
+
+#cmd {
+  width: 35%;
+}
+
 /* Database entry row */
 .entry {
   border: 3px solid black;
@@ -95,7 +112,7 @@ nav {
 }
 
 .colors img {
-  height: 25px;
+  height: 28px;
 }
 
 /* Database info row */
