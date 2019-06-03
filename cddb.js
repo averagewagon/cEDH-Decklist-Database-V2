@@ -191,7 +191,7 @@ The javascript for the databases in the cEDH Decklist Database.
 
     let colors = document.createElement("td");
     colors.classList = "colors";
-    let colorSplit = entry.colors.split("");
+    let colorSplit = entry.colors.toLowerCase().split("");
     for (let i = 0; i < 5; i++) {
       let letter = "blank";
       if (colorSplit[i]) {
