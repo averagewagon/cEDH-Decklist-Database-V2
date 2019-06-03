@@ -60,6 +60,10 @@ nav {
   margin-right: 10px;
 }
 
+#searchform button {
+  width: 20%;
+}
+
 #database {
   font-family: 'IBM Plex Mono', monospace;
 }
@@ -68,17 +72,15 @@ nav {
   width: 100%;
   text-align: left !important;
   font-weight: bold !important;
-}
-
-.primer {
-  text-align: center;
+  font-size: 14pt;
 }
 
 /* Database entry row */
 .entry {
-  border: 2px solid black;
+  border: 3px solid black;
   color: white;
-  font-size: 12pt;
+  font-size: 15pt;
+  font-weight: bold;
 }
 
 .entry:hover {
@@ -103,7 +105,7 @@ nav {
 }
 
 .info td {
-  background-color: #525559 !important;
+  background-color: #636669 !important;
 }
 
 .sub {
@@ -128,10 +130,15 @@ nav {
   width: 50%;
 }
 
+.description p {
+  font-family: Palatino, sans-serif;
+  font-size: 14pt;
+}
+
 .decklists {
   width: 25%;
   border: 2px solid black;
-  background-color: lightgray;
+  background-color: #3c4044;
 }
 
 .decklists a {
@@ -141,14 +148,14 @@ nav {
   text-align: center;
 }
 
-.suggested {
+.decklists .suggested {
   font-weight: bold;
   font-size: 12pt;
-  color: darkblue;
+  color: lightblue;
 }
 
 .decklists .alt {
-  color: black;
+  color: white;
   font-size: 12pt;
   font-style: italic;
   font-weight: bold;
@@ -158,9 +165,13 @@ nav {
 .discord {
   width: 25%;
   text-align: center;
-  background-color: gray;
+  background-color: #3c4044;
   border: 2px solid black;
   border-left: none;
+}
+
+.discord .missing {
+  text-decoration: line-through !important;
 }
 
 .discord img {
@@ -172,12 +183,17 @@ nav {
   font-weight: bold;
 }
 
+.discord .suggested {
+  color: lightblue !important;
+}
+
 .discord .alt {
-  color: black;
+  color: white;
   font-style: italic;
 }
 
 .curators {
   text-align: right;
   font-size: 14pt;
+  margin-bottom: 0;
 }

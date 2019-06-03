@@ -14,6 +14,17 @@ The javascript for the databases in the cEDH Decklist Database.
   * @description {Initializes the code and adds event listeners}
   */
   function init() {
+    // Submit on enter
+    // https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp
+    id("searchtext").addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("search").click();
+      }
+    });
+
+    id("search").addEventListener("click", loadDatabase);
+
     let sorts = qsa("thead th button");
     sorts.forEach(function(button) {
       button.addEventListener("click", activateSearch);
@@ -44,16 +55,29 @@ The javascript for the databases in the cEDH Decklist Database.
 
   /** Gets the table from the API in order to display it on the webpage. */
   function loadDatabase() {
-    let sort = qs(".chosensort").id;
     id("entries").innerHTML = "";
-    let url = URL_BASE;
+    let sort = qs(".chosensort").id;
+    let search = id("searchtext").value.trim().split(" ").join("+");
+    console.log(search);
+
+    let params = new FormData();
+    params.append("sort", sort);
+    params.append("search", search);
 
     /*
-    fetch(url)
+    fetch(URL_BASE, {method: "POST", body: params})
       .then(checkStatus)
       .then(JSON.parse)
-      .then(populateApps)
+      .then(populateDatabase)
       .catch(printError);*/
+  }
+
+  /**
+   * Uses the response to populate the table
+   * @param {object} response - The response from the API
+   */
+  function populateDatabase(response) {
+
   }
 
   /** Prints and error's content to the webpage
