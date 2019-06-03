@@ -46,21 +46,12 @@ The javascript for the databases in the cEDH Decklist Database.
    * @param {object} response - The response from the API
    */
   function populateDatabase(response) {
-    console.log(response);
-    // Set up event listeners, as they should wait for the API to load
-    // Submit on enter
-    // https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp
-    id("searchtext").addEventListener("keyup", function(event) {
-    if (event.keyCode === 13) {
-        event.preventDefault();
-        document.getElementById("search").click();
-      }
-    });
     id("search").addEventListener("click", updateDatabase);
     let sorts = qsa("thead th button");
     sorts.forEach(function(button) {
       button.addEventListener("click", activateSearch);
     });
+    id("searchtext").addEventListener("input", updateDatabase);
 
     formDatabase(response);
     updateDatabase();
@@ -143,16 +134,16 @@ The javascript for the databases in the cEDH Decklist Database.
   function updateDatabase() {
     id("entries").innerHTML = "";
     let sort = qs(".chosensort").id;
-    let search = id("searchtext").value.trim();
+    let search = id("searchtext").value.trim().toLowerCase();
 
     for (let i in database) {
       let entry = database[i];
 
-      if ((((entry.commander.includes(search)
-          || entry.curators.includes(search))
-          || entry.deckname.includes(search))
-          || entry.description.includes(search))
-          || entry.strategy.includes(search)) {
+      if ((((entry.commander.toLowerCase().includes(search)
+          || entry.curators.toLowerCase().includes(search))
+          || entry.deckname.toLowerCase().includes(search))
+          || entry.description.toLowerCase().includes(search))
+          || entry.strategy.toLowerCase().includes(search)) {
           addRow(entry, i);
       }
     }
@@ -183,20 +174,9 @@ The javascript for the databases in the cEDH Decklist Database.
     }
     entryRow.appendChild(colors);
 
-    let strategy = document.createElement("td");
-    strategy.classList = "strategy";
-    strategy.innerText = entry.strategy;
-    entryRow.appendChild(strategy);
-
-    let commander = document.createElement("td");
-    commander.classList = "commander";
-    commander.innerText = entry.commander;
-    entryRow.appendChild(commander);
-
-    let deckname = document.createElement("td");
-    deckname.classList = "deckname";
-    deckname.innerText = entry.deckname;
-    entryRow.appendChild(deckname);
+    entryRow.appendChild(addBasicData(entry, "strategy"));
+    entryRow.appendChild(addBasicData(entry, "commander"));
+    entryRow.appendChild(addBasicData(entry, "deckname"));
 
     let infoRow = document.createElement("tr");
     infoRow.classList = "info table-secondary";
@@ -211,12 +191,24 @@ The javascript for the databases in the cEDH Decklist Database.
     sub.classList = "collapse sub";
     td.appendChild(sub);
 
-    let upper = document.createElement("upper");
+    let upper = document.createElement("div");
+    upper.classList = "upper";
     sub.appendChild(upper);
+    upper.appendChild(addDescription(entry));
+    upper.appendChild(addLists(entry));
+    upper.appendChild(addDiscord(entry));
+  }
 
+  function addBasicData(entry, data) {
+    let adding = document.createElement("td");
+    adding.classList = data;
+    adding.innerText = entry[data];
+    return adding;
+  }
+
+  function addDescription(entry) {
     let description = document.createElement("div");
     description.classList = "description";
-    upper.appendChild(description);
     let name = document.createElement("h4");
     name.innerText = entry.deckname;
     description.appendChild(name);
@@ -224,34 +216,84 @@ The javascript for the databases in the cEDH Decklist Database.
     let desc = document.createElement("p");
     desc.innerText = entry.description;
     description.appendChild(desc);
+    return description;
+  }
 
+  function addLists(entry) {
     let decklists = document.createElement("div");
     decklists.classList = "decklists";
-    upper.appendChild(decklists);
 
     let lists = entry.list.split(",");
     for (let i in lists) {
-      let list = lists[i];
+      let list = lists[i].trim();
       let link = document.createElement("a");
       link.href = list;
       link.target = "_blank";
-      if (i === 0) {
-        link.classList = "suggested";
-        link.innerText = "Suggested Decklist";
-      } else if (i === 1) {
+      if (i == 1) {
         let sep = document.createElement("hr");
         decklists.appendChild(sep);
-        link.classList = "alt";
-        link.innerText = "Alternate List";
+      }
+      if (i == 0) {
+        link.classList = "suggested";
+        link.innerText = "Suggested Decklist";
       } else {
         link.classList = "alt";
         link.innerText = "Alternate List";
       }
-      if (entry.primer === "Y") {
+      let primers = entry.primer.split(",");
+      if (primers[i] === "Y") {
         link.innerText = link.innerText + " [P]"
       }
       decklists.appendChild(link);
     }
+
+    return decklists;
+  }
+
+  function addDiscord(entry) {
+    let discord = document.createElement("div");
+    discord.classList = "discord";
+    let icon = document.createElement("img");
+    if (entry.discord == "NA") {
+      icon.src = "img/nodiscord.png";
+      icon.alt = "Missing Discord Server Image";
+      let link = document.createElement("a");
+      link.classList = "suggested";
+      let text = document.createElement("p");
+      text.innerText = "Discord Server";
+      text.classList = "missing";
+      link.appendChild(icon);
+      link.appendChild(text);
+      discord.appendChild(link);
+    } else {
+      let servers = entry.discord.split(",");
+      for (let i in servers) {
+        let single = servers[i].trim();
+        let link = document.createElement("a");
+        link.href = single;
+        link.target = "_blank";
+        if (i == 1) {
+          let sep = document.createElement("hr");
+          discord.appendChild(sep);
+        }
+        if (i == 0) {
+          icon.src = "img/discord.png";
+          icon.alt = "Discord Server Icon";
+          let text = document.createElement("p");
+          text.innerText = "Discord Server";
+          link.appendChild(icon);
+          link.appendChild(text);
+          discord.appendChild(link);
+        } else {
+          let text = document.createElement("p");
+          text.innerText = "Alternate";
+          link.appendChild(icon);
+          link.appendChild(text);
+          discord.appendChild(link);
+        }
+      }
+    }
+    return discord;
   }
 
   /** Prints and error's content to the webpage
