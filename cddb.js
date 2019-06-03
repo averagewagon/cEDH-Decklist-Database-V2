@@ -18,32 +18,7 @@ The javascript for the databases in the cEDH Decklist Database.
   * @description {Initializes the code and adds event listeners}
   */
   function init() {
-  if (window.location.href.indexOf("primary") > -1) {
-    id("primary").classList.add("active");
-  } else if (window.location.href.indexOf("fringe") > -1) {
-    id("fringe").classList.add("active");
-  } else if (window.location.href.indexOf("submissions") > -1) {
-    id("submissions").classList.add("active");
-  } else if (window.location.href.indexOf("resources") > -1) {
-    id("resources").classList.add("active");
-  } else {
-    window.location.href = "primary.html";
-  }
-
-  id("primary").addEventListener("click", () => {
-    window.location.href = "primary.html";
-  });
-  id("fringe").addEventListener("click", () => {
-    window.location.href = "fringe.html";
-  });
-  id("submissions").addEventListener("click", () => {
-    window.location.href = "submissions.html";
-  });
-  id("resources").addEventListener("click", () => {
-    window.location.href = "resources.html";
-  });
-
-  loadDatabase();
+    loadDatabase();
   }
 
   /** Gets the table from the API in order to display it on the webpage. */
