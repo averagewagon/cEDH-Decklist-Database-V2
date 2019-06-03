@@ -15,12 +15,8 @@
 
 /* Body/Nav Styles */
 body {
-  width: 65%;
+  width: 75%;
   margin: 0 auto;
-}
-
-nav {
-  min-width: 840px;
 }
 
 #navbar {

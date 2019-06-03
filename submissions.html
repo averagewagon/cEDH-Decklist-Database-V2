@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--
+  Github Username - AverageDragon
+  6/2/2019
+  The "primary" webpage for the Decklist Database.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>cEDH Decklist Database</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="styles.css" />
+    <script src="cddb.js"></script>
+    <link rel="icon" type="image/ico" href="img/favicon.ico">
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="collapse navbar-collapse" id="navbar">
+          <a class="navbar-brand" href="#" id="logo">
+            <img src="img/phy.png">
+            cEDH Decklist Database
+          </a>
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li id="primary" class="nav-item">
+              <a class="nav-link" href="#">Primary Database</a>
+            </li>
+            <li id="fringe" class="nav-item">
+              <a class="nav-link" href="#">Fringe Database</a>
+            </li>
+            <li id="submissions" class="nav-item">
+              <a class="nav-link" href="#">Submissions</a>
+            </li>
+            <li id="resources" class="nav-item">
+              <a class="nav-link" href="#">Resources</a>
+            </li>
+          </ul>
+          <span class="navbar-text">
+            <a href="https://discord.gg/BXPyu2P" target="_blank">
+              <span>Discord Server</span>
+              <img src="img/discord.png" alt="Discord Image">
+            </a>
+        </div>
+      </nav>
+
+      <main>
+        <div id="dbinfo">
+          <p>
+            This is a description of the various parts of the database.
+            It tells people who are new to the database what each column means,
+            and how to easily navigate the database to find what they want.
+            In the future, this will also hold the search feature for the database,
+            allowing individuals to search names, descriptions, and
+            commanders. You can also filter lists to ones that contain colors,
+            a strategy, or if a list has a primer.
+          </p>
+          <div id="searchform">
+            <input class="form-control form-control-lg" type="text" placeholder="Search Database..." id="searchtext" autocomplete="off">
+            <button id="search" type="button" class="btn btn-success">Search</button>
+          </div>
+        </div>
+
+        <table id="database" class="table table-hover table-striped">
+          <thead class="thead-dark">
+            <th id="clr"><button id="colors" type="button" class="btn btn-secondary chosensort">Colors</button></th>
+            <th id="strt"><button id="strategy" type="button" class="btn btn-primary">Strategy</button></th>
+            <th id="cmd"><button id="commander"type="button" class="btn btn-primary">Commander(s)</button></th>
+            <th id="dnm"><button id="deckname" type="button" class="btn btn-primary">Deck Name</button></th>
+          </thead>
+          <tbody id="entries">
+          </tbody>
+        </table>
+      </main>
+    </div>
+  </body>
+</html>

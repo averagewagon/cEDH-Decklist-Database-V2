@@ -8,6 +8,7 @@ The javascript for the databases in the cEDH Decklist Database.
 
   const FIRST_DB = "https://spreadsheets.google.com/feeds/cells/1NYZ2g0ETfGulhPKYAKrKTPjviaLERKuvyKyk9oizV8Q/1/public/full?alt=json";
   const SECOND_DB = "https://spreadsheets.google.com/feeds/cells/1NYZ2g0ETfGulhPKYAKrKTPjviaLERKuvyKyk9oizV8Q/2/public/full?alt=json";
+  const THIRD_DB = "https://spreadsheets.google.com/feeds/cells/1NYZ2g0ETfGulhPKYAKrKTPjviaLERKuvyKyk9oizV8Q/3/public/full?alt=json";
 
   let database;
 
@@ -50,8 +51,10 @@ The javascript for the databases in the cEDH Decklist Database.
     let url = "";
     if (qs(".active").id === "primary") {
       url = FIRST_DB;
-    } else if (qs(".active").id === "primary") {
+    } else if (qs(".active").id === "fringe") {
       url = SECOND_DB;
+    } else if (qs(".active").id === "submissions") {
+      url = THIRD_DB;
     } else {
       console.error("This isn't a database page, you dolt");
     }
@@ -68,6 +71,7 @@ The javascript for the databases in the cEDH Decklist Database.
    * @param {object} response - The response from the API
    */
   function populateDatabase(response) {
+    console.log(response);
     // Set up event listeners, as they should wait for the API to load
     // Submit on enter
     // https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp
