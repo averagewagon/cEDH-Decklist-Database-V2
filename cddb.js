@@ -197,6 +197,12 @@ The javascript for the databases in the cEDH Decklist Database.
     upper.appendChild(addDescription(entry));
     upper.appendChild(addLists(entry));
     upper.appendChild(addDiscord(entry));
+
+    sub.appendChild(document.createElement("hr"));
+    let curators = document.createElement("p");
+    curators.innerText = entry.curators;
+    curators.classList = "curators";
+    sub.appendChild(curators);
   }
 
   function addBasicData(entry, data) {

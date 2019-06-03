@@ -13,6 +13,10 @@
   display: none;
 }
 
+.displayed {
+  display: table-row;
+}
+
 /* Body/Nav Styles */
 body {
   width: 75%;
@@ -113,16 +117,20 @@ body {
 
 /* Database info row */
 .info {
-  /*display: none;
-  uncomment when Javascript*/
+  padding: 0;
 }
 
 .info td {
   background-color: #636669 !important;
+  padding: 0;
 }
 
 .sub {
   color: #fff;
+}
+
+.sub > div, .sub > hr, .sub > p {
+  margin: 20px;
 }
 
 .sub hr {
