@@ -73,7 +73,16 @@
           </p>
           <div id="searchform">
             <input class="form-control form-control-lg" type="text" placeholder="Search Database..." id="searchtext" autocomplete="off">
-            <button id="search" type="button" class="btn btn-success">Search</button>
+            <div id="switches">
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="hasPrimer" checked="false">
+                <label class="custom-control-label" for="hasPrimer">Entries have a primer.</label>
+              </div>
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="hasDiscord" checked="false">
+                <label class="custom-control-label" for="hasDiscord">Entries have a Discord server.</label>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -81,7 +90,7 @@
           <thead class="thead-dark">
             <th id="clr"><button id="colors" type="button" class="btn btn-secondary chosensort">Colors</button></th>
             <th id="strt"><button id="strategy" type="button" class="btn btn-primary">Strategy</button></th>
-            <th id="cmd"><button id="commander"type="button" class="btn btn-primary">Commander(s)</button></th>
+            <th id="cmd"><button id="commander" type="button" class="btn btn-primary">Commander(s)</button></th>
             <th id="dnm"><button id="deckname" type="button" class="btn btn-primary">Deck Name</button></th>
           </thead>
           <tbody id="entries">

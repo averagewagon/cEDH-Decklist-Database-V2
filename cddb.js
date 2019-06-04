@@ -6,10 +6,7 @@ The javascript for the databases in the cEDH Decklist Database.
 (function() {
   "use strict";
 
-  const FIRST_DB = "https://spreadsheets.google.com/feeds/cells/1NYZ2g0ETfGulhPKYAKrKTPjviaLERKuvyKyk9oizV8Q/1/public/full?alt=json";
-  const SECOND_DB = "https://spreadsheets.google.com/feeds/cells/1NYZ2g0ETfGulhPKYAKrKTPjviaLERKuvyKyk9oizV8Q/2/public/full?alt=json";
-  const THIRD_DB = "https://spreadsheets.google.com/feeds/cells/1NYZ2g0ETfGulhPKYAKrKTPjviaLERKuvyKyk9oizV8Q/3/public/full?alt=json";
-
+  const BASE_URL = "database.php";
   let database;
 
   window.addEventListener("load", init);
@@ -23,16 +20,7 @@ The javascript for the databases in the cEDH Decklist Database.
 
   /** Gets the table from the API in order to display it on the webpage. */
   function loadDatabase() {
-    let url = "";
-    if (qs(".active").id === "primary") {
-      url = FIRST_DB;
-    } else if (qs(".active").id === "fringe") {
-      url = SECOND_DB;
-    } else if (qs(".active").id === "submissions") {
-      url = THIRD_DB;
-    } else {
-      console.error("This isn't a database page, you dolt");
-    }
+    let url = BASE_URL + "?list="+ qs(".active").id;
 
     fetch(url)
       .then(checkStatus)
@@ -46,71 +34,21 @@ The javascript for the databases in the cEDH Decklist Database.
    * @param {object} response - The response from the API
    */
   function populateDatabase(response) {
-    id("search").addEventListener("click", updateDatabase);
     let sorts = qsa("thead th button");
     sorts.forEach(function(button) {
-      button.addEventListener("click", activateSearch);
+      button.addEventListener("click", activateSort);
     });
+    id("switches").addEventListener("click", updateDatabase);
     id("searchtext").addEventListener("input", updateDatabase);
 
-    formDatabase(response);
+    database = response;
     updateDatabase();
-  }
-
-  /**
-   * Uses the response to clean the json
-   * @param {object} response - The response from the API
-   */
-  function formDatabase(response) {
-    let builder = []
-    let objectCount = 0;
-    let rowcount = 0;
-
-    for (let i in response.feed.entry) {
-      if (i >= 9) {
-        if (!builder[objectCount]) {
-          builder[objectCount] = {};
-        }
-        let objectValue = response.feed.entry[i].content["$t"];
-        if (rowcount === 0) {
-          builder[objectCount].primer = objectValue;
-          rowcount = rowcount + 1;
-        } else if (rowcount === 1) {
-          builder[objectCount].strategy = objectValue;
-          rowcount = rowcount + 1;
-        } else if (rowcount === 2) {
-          builder[objectCount].deckname = objectValue;
-          rowcount = rowcount + 1;
-        } else if (rowcount === 3) {
-          builder[objectCount].list = objectValue;
-          rowcount = rowcount + 1;
-        } else if (rowcount === 4) {
-          builder[objectCount].commander = objectValue;
-          rowcount = rowcount + 1;
-        } else if (rowcount === 5) {
-          builder[objectCount].description = objectValue;
-          rowcount = rowcount + 1;
-        } else if (rowcount === 6) {
-          builder[objectCount].colors = objectValue;
-          rowcount = rowcount + 1;
-        } else if (rowcount === 7) {
-          builder[objectCount].discord = objectValue;
-          rowcount = rowcount + 1;
-        } else if (rowcount === 8) {
-          builder[objectCount].curators = objectValue;
-          rowcount = 0;
-          objectCount = objectCount + 1;
-        }
-      }
-    }
-
-    database = builder;
   }
 
   /** Refetches the database according to the search.
   * @param {object} this - The button which was clicked
   */
-  function activateSearch() {
+  function activateSort() {
     let sorts = qsa("thead th button");
     let choice = this.id;
     sorts.forEach(function(button) {
@@ -135,18 +73,27 @@ The javascript for the databases in the cEDH Decklist Database.
     id("entries").innerHTML = "";
     let sort = qs(".chosensort").id;
     let search = id("searchtext").value.trim().toLowerCase();
+    let priObj = !id("hasPrimer").checked;
+    let discObj = !id("hasDiscord").checked;
 
     for (let i in database) {
       let entry = database[i];
-
-      if ((((entry.commander.toLowerCase().includes(search)
-          || entry.curators.toLowerCase().includes(search))
+      let searched = ((entry.commander.toLowerCase().includes(search)
           || entry.deckname.toLowerCase().includes(search))
-          || entry.description.toLowerCase().includes(search))
-          || entry.strategy.toLowerCase().includes(search)) {
-          addRow(entry, i);
+          || entry.description.toLowerCase().includes(search));
+
+      let hasPrimer = (entry.primer.includes("Y")) || !priObj;
+      let hasDiscord = (entry.discord != "NA") || !discObj;
+      if (hasPrimer &&  (hasDiscord && searched)) {
+        addRow(entry, i);
       }
     }
+
+    sortRows(sort);
+  }
+
+  function sortRows(sort) {
+
   }
 
   function addRow(entry, count) {
@@ -159,6 +106,24 @@ The javascript for the databases in the cEDH Decklist Database.
     entryRow.classList.add("entry");
     document.getElementById("entries").appendChild(entryRow);
 
+
+    let colors = document.createElement("td");
+    colors.classList = "colors";
+    let colorSplit = entry.colors.toLowerCase().split("");
+    let colorArray = ["w", "u", "b", "r", "g"];
+    for (let i = 0; i < 5; i++) {
+      let letter = colorArray[i];
+      let image = document.createElement("img");
+      if (!colorSplit.includes(letter)) {
+        letter = "d";
+      }
+      image.src= "img/mana/" + letter + ".png";
+      image.alt = letter;
+      colors.appendChild(image);
+    }
+    entryRow.appendChild(colors);
+
+    /*
     let colors = document.createElement("td");
     colors.classList = "colors";
     let colorSplit = entry.colors.toLowerCase().split("");
@@ -173,6 +138,7 @@ The javascript for the databases in the cEDH Decklist Database.
       colors.appendChild(image);
     }
     entryRow.appendChild(colors);
+    */
 
     entryRow.appendChild(addBasicData(entry, "strategy"));
     entryRow.appendChild(addBasicData(entry, "commander"));
@@ -200,7 +166,7 @@ The javascript for the databases in the cEDH Decklist Database.
 
     sub.appendChild(document.createElement("hr"));
     let curators = document.createElement("p");
-    curators.innerText = entry.curators;
+    curators.innerText = entry.curators.join(", ");
     curators.classList = "curators";
     sub.appendChild(curators);
   }
@@ -208,7 +174,35 @@ The javascript for the databases in the cEDH Decklist Database.
   function addBasicData(entry, data) {
     let adding = document.createElement("td");
     adding.classList = data;
-    adding.innerText = entry[data];
+    if (data == "deckname") {
+      let image = document.createElement("img");
+      image.src = "img/primer.png";
+      image.classList.add("primerImage");
+      if (entry.primer.includes("Y")) {
+        image.alt = "primer";
+      } else {
+        image.classList.add("darkened");
+        image.alt = "no primer";
+      }
+      adding.appendChild(image);
+
+      let dimage = document.createElement("img");
+      dimage.src = "img/hasdiscord.png";
+      dimage.classList = "discordImage";
+      if (!entry.discord.includes("NA")) {
+        dimage.alt = "discord";
+      } else {
+        dimage.classList.add("darkened");
+        image.alt = "no discord";
+      }
+      adding.appendChild(dimage);
+
+      let text = document.createElement("div");
+      text.innerText = entry[data];
+      adding.appendChild(text);
+    } else {
+      adding.innerText = entry[data];
+    }
     return adding;
   }
 
@@ -229,7 +223,7 @@ The javascript for the databases in the cEDH Decklist Database.
     let decklists = document.createElement("div");
     decklists.classList = "decklists";
 
-    let lists = entry.list.split(",");
+    let lists = entry.list
     for (let i in lists) {
       let list = lists[i].trim();
       let link = document.createElement("a");
@@ -246,7 +240,7 @@ The javascript for the databases in the cEDH Decklist Database.
         link.classList = "alt";
         link.innerText = "Alternate List";
       }
-      let primers = entry.primer.split(",");
+      let primers = entry.primer;
       if (primers[i] === "Y") {
         link.innerText = link.innerText + " [P]"
       }
@@ -261,7 +255,8 @@ The javascript for the databases in the cEDH Decklist Database.
     discord.classList = "discord";
     let icon = document.createElement("img");
     if (entry.discord == "NA") {
-      icon.src = "img/nodiscord.png";
+      icon.src = "img/discord.png";
+      icon.classList.add("darkened");
       icon.alt = "Missing Discord Server Image";
       let link = document.createElement("a");
       link.classList = "suggested";
@@ -272,7 +267,7 @@ The javascript for the databases in the cEDH Decklist Database.
       link.appendChild(text);
       discord.appendChild(link);
     } else {
-      let servers = entry.discord.split(",");
+      let servers = entry.discord;
       for (let i in servers) {
         let single = servers[i].trim();
         let link = document.createElement("a");
