@@ -24,6 +24,7 @@ The javascript for the databases in the cEDH Decklist Database.
 
     fetch(url)
       .then(checkStatus)
+      .then(console.log)
       .then(JSON.parse)
       .then(populateDatabase)
       .catch(printError);
