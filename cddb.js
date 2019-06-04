@@ -6,7 +6,8 @@ The javascript for the databases in the cEDH Decklist Database.
 (function() {
   "use strict";
 
-  const BASE_URL = "database.php";
+  const BASE_URL = "https://sheets.googleapis.com/v4/spreadsheets/1NYZ2g0ETfGulhPKYAKrKTPjviaLERKuvyKyk9oizV8Q/values/";
+  const PARAMS = "!A2:I?key=AIzaSyCy2pE5znDZ9uDdpSgYb2Q992r0YOIPuIw";
   let database;
 
   window.addEventListener("load", init);
@@ -20,11 +21,10 @@ The javascript for the databases in the cEDH Decklist Database.
 
   /** Gets the table from the API in order to display it on the webpage. */
   function loadDatabase() {
-    let url = BASE_URL + "?list="+ qs(".active").id;
+    let url = BASE_URL + qs(".active").id + PARAMS;
 
     fetch(url)
       .then(checkStatus)
-      .then(console.log)
       .then(JSON.parse)
       .then(populateDatabase)
       .catch(printError);
@@ -42,7 +42,23 @@ The javascript for the databases in the cEDH Decklist Database.
     id("switches").addEventListener("click", updateDatabase);
     id("searchtext").addEventListener("input", updateDatabase);
 
-    database = response;
+    let temp = [];
+    let narrowedResponse = response.values;
+    for (let i in narrowedResponse) {
+      let entry = narrowedResponse[i];
+      let row = [];
+      row.primer = entry[0].trim().split(", ");
+      row.list = entry[3].trim().split(", ");
+      row.strategy = entry[1];
+      row.deckname = entry[2];
+      row.commander = entry[4];
+      row.description = entry[5];
+      row.colors = entry[6];
+      row.discord = entry[7].trim().split(", ");
+      row.curators = entry[8].trim().split(", ");
+      temp.push(row);
+    }
+    database = temp;
     updateDatabase();
   }
 

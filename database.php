@@ -1,5 +1,5 @@
 <?php
-
+/* Needs to be hosted somewhere, until then.... */
 ini_set("allow_url_fopen", 1);
 
 if (isset($_GET["list"])) {
