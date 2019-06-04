@@ -309,6 +309,7 @@ The javascript for the databases in the cEDH Decklist Database.
     let row = document.createElement("tr");
     row.appendChild(error);
     id("entries").appendChild(row);
+    console.error(info);
   }
 
   /**
