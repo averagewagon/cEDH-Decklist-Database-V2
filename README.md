@@ -1,15 +1,31 @@
 # cEDH-Decklist-Database
 A collection of Competitive EDH decklists.
+Hosted at: https://averagedragon.github.io/cEDH-Decklist-Database/
 
-Planned Functionality:
-- All functionality of previous cDB.
-- Improved styling (dark theme, better landing page, prettier database)
-- Better support for mobile devices
-- Search functionality
-- Ability to sort by header
-- Guide to choosing decklists
-- Clearer guidelines on how deck admission works
-- Accordions to be more space-efficient
-- Multiple decklists for the same deck
-- MORE PRETTIER
+Completed Features:
+- Dark theme
+- Primary database listings
+- Fringe database listings
+- Multiple decklists for the same entry
+- Multiple Discord servers for the same entry
+- Space-efficient accordions
+- Color, primer, and Discord icons
+
+Planned Features:
+- Mobile support (PARTIAL)
+- Search functionality (PARTIAL)
+- Header sort options
+- Deck admission guidelines
 - Embedded Submission Form
+- Submission database listings
+- Date added feature
+- Sort by date added
+- Author search
+- Filter to colors w/ selectable color bars
+- Descriptions above databases
+- Resources tab, with links to cEDH resources
+
+Potential Additions:
+- Decklist "recently updated" feature, scraping lists that have been updated in the past 3 months
+- Different website icon
+- Change font
