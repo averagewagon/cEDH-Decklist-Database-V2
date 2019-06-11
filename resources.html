@@ -2,7 +2,9 @@
 <!--
   Github Username - AverageDragon
   6/2/2019
-  The "primary" webpage for the Decklist Database.
+  The "resources" webpage for the Decklist Database.
+  Links to various cEDH communities, resources, and has a small guide for the
+  built-in Google Sheets API.
 -->
 <html lang="en">
   <head>
@@ -24,8 +26,8 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="styles.css" />
-    <script src="nav.js"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/nav.js"></script>
     <link rel="icon" type="image/ico" href="img/favicon.ico">
   </head>
 
@@ -60,17 +62,12 @@
       </nav>
 
       <main>
-        <div id="dbinfo">
-          <p>
-            This is a description of the various parts of the database.
-            It tells people who are new to the database what each column means,
-            and how to easily navigate the database to find what they want.
-            In the future, this will also hold the search feature for the database,
-            allowing individuals to search names, descriptions, and
-            commanders. You can also filter lists to ones that contain colors,
-            a strategy, or if a list has a primer.
-          </p>
-        </div>
+        <article id="resources">
+          This section is incomplete, but here are some resources.
+          <ul>
+            <li><a href="https://docs.google.com/spreadsheets/d/1NYZ2g0ETfGulhPKYAKrKTPjviaLERKuvyKyk9oizV8Q/edit#gid=0">Google Sheets Database Link</a></li>
+            <li>Public API Key for the DDB: AIzaSyDHHj3iw-Cy0AcMmtN5hiYMn3ALUULzwtE</li>
+        </article>
       </main>
     </div>
   </body>
