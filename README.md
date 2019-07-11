@@ -12,13 +12,11 @@ Completed Features:
 - Color, primer, and Discord icons
 - Embedded Submission Form
 - Search functionality
+- Date added feature
+- Author search
 
 Planned Features:
-- Header sort options
 - Deck admission guidelines
-- Date added feature
-- Sort by date added
-- Author search
 - Filter to colors w/ selectable color bars
 - Descriptions above databases
 - Resources tab, with links to cEDH resources
