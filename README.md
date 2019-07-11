@@ -11,9 +11,9 @@ Completed Features:
 - Space-efficient accordions
 - Color, primer, and Discord icons
 - Embedded Submission Form
+- Search functionality
 
 Planned Features:
-- Search functionality (PARTIAL)
 - Header sort options
 - Deck admission guidelines
 - Date added feature
