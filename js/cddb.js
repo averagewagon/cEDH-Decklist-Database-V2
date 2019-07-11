@@ -53,7 +53,7 @@ The javascript for the databases in the cEDH Decklist Database.
       row.deckname = entry[2];
       row.commander = entry[4];
       row.description = entry[5];
-      row.colors = entry[6];
+      row.colors = entry[6].replace(" ", "").replace(",", "");
       row.discord = entry[7].trim().split(", ");
       row.curators = entry[8].trim().split(", ");
       temp.push(row);
@@ -109,10 +109,12 @@ The javascript for the databases in the cEDH Decklist Database.
     sortRows(sort);
   }
 
+  /* TODO: Add sort function */
   function sortRows(sort) {
 
   }
 
+  /* Adds a single row to the database */
   function addRow(entry, count) {
     let id = "ie" + count;
     let entryRow = document.createElement("tr");

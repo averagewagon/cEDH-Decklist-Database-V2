@@ -63,41 +63,7 @@
       </nav>
 
       <main>
-        <div id="dbinfo">
-          <p>
-            This is a description of the various parts of the database.
-            It tells people who are new to the database what each column means,
-            and how to easily navigate the database to find what they want.
-            In the future, this will also hold the search feature for the database,
-            allowing individuals to search names, descriptions, and
-            commanders. You can also filter lists to ones that contain colors,
-            a strategy, or if a list has a primer.
-          </p>
-          <div id="searchform">
-            <input class="form-control form-control-lg" type="text" placeholder="Search Database..." id="searchtext" autocomplete="off">
-            <div id="switches">
-              <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="hasPrimer" checked="false">
-                <label class="custom-control-label" for="hasPrimer">Entries have a primer.</label>
-              </div>
-              <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="hasDiscord" checked="false">
-                <label class="custom-control-label" for="hasDiscord">Entries have a Discord server.</label>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <table id="database" class="table table-hover table-striped">
-          <thead class="thead-dark">
-            <th id="clr"><button id="colors" type="button" class="btn btn-secondary chosensort">Colors</button></th>
-            <th id="strt"><button id="strategy" type="button" class="btn btn-primary">Strategy</button></th>
-            <th id="cmd"><button id="commander"type="button" class="btn btn-primary">Commander(s)</button></th>
-            <th id="dnm"><button id="deckname" type="button" class="btn btn-primary">Deck Name</button></th>
-          </thead>
-          <tbody id="entries">
-          </tbody>
-        </table>
       </main>
     </div>
   </body>
