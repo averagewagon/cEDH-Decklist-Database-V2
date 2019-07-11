@@ -10,14 +10,12 @@ Completed Features:
 - Multiple Discord servers for the same entry
 - Space-efficient accordions
 - Color, primer, and Discord icons
+- Embedded Submission Form
 
 Planned Features:
-- Mobile support (PARTIAL)
 - Search functionality (PARTIAL)
 - Header sort options
 - Deck admission guidelines
-- Embedded Submission Form
-- Submission database listings
 - Date added feature
 - Sort by date added
 - Author search
