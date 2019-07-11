@@ -236,3 +236,24 @@ body {
   font-size: 14pt;
   margin-bottom: 0;
 }
+
+#subm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#ptop {
+  margin: 6px;
+  font-size: 22pt;
+  color: white;
+  text-align: center;
+}
+
+#pbot {
+  margin: 6px;
+  margin-bottom: 20px;
+  font-size: 16pt;
+  text-align: center;
+}
