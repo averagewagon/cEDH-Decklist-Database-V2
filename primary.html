@@ -72,17 +72,21 @@
             commanders. You can also filter lists to ones that contain colors,
             a strategy, or if a list has a primer.
           </p>
+
           <div id="searchform">
-            <input class="form-control form-control-lg" type="text" placeholder="Search Database..." id="searchtext" autocomplete="off">
+            <div id="searches">
+              <input class="form-control form-control-lg" type="text" placeholder="Search Database..." id="searchtext" autocomplete="off">
+              <input class="form-control form-control-lg" type="text" placeholder="Search Curators..." id="searchcurators" autocomplete="off">
+            </div>
             <div id="switches">
-              <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="hasPrimer" checked="false">
-                <label class="custom-control-label" for="hasPrimer">Entries have a primer.</label>
-              </div>
-              <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="hasDiscord" checked="false">
-                <label class="custom-control-label" for="hasDiscord">Entries have a Discord server.</label>
-              </div>
+              <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                  <a class="nav-link" id="hasPrimer">Decks have a primer</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="hasDiscord">Decks have a Discord server</a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

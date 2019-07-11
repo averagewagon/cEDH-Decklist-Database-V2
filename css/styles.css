@@ -58,16 +58,32 @@ body {
 
 #searchform {
   display: flex;
+  align-items: center;
   margin-bottom: 10px;
-  margin-top: 30px;
+  margin-top: 12px;
 }
 
 #searchform input {
   margin-right: 10px;
 }
 
+#searches {
+  width: 70%;
+}
+
+#searchtext {
+  margin-bottom: 8px;
+}
+
 #switches {
   width: 35%;
+  font-size: 16pt;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+#hasDiscord {
+  margin-top: 8px;
 }
 
 #database {

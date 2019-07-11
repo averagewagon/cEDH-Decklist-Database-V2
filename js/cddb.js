@@ -39,8 +39,11 @@ The javascript for the databases in the cEDH Decklist Database.
     sorts.forEach(function(button) {
       button.addEventListener("click", activateSort);
     });
-    id("switches").addEventListener("click", updateDatabase);
     id("searchtext").addEventListener("input", updateDatabase);
+    id("searchcurators").addEventListener("input", updateDatabase);
+
+    id("hasPrimer").addEventListener("click", toggle);
+    id("hasDiscord").addEventListener("click", toggle);
 
     let temp = [];
     let narrowedResponse = response.values;
@@ -62,6 +65,16 @@ The javascript for the databases in the cEDH Decklist Database.
     updateDatabase();
   }
 
+  function toggle() {
+    let obj = this;
+    if (obj.classList.contains("active")) {
+      obj.classList.remove("active");
+    } else {
+      obj.classList.add("active");
+    }
+    updateDatabase();
+  }
+
   /** Refetches the database according to the search.
   * @param {object} this - The button which was clicked
   */
@@ -80,7 +93,6 @@ The javascript for the databases in the cEDH Decklist Database.
         button.classList.remove("chosensort");
       }
     });
-
     updateDatabase();
   }
 
@@ -90,8 +102,9 @@ The javascript for the databases in the cEDH Decklist Database.
     id("entries").innerHTML = "";
     let sort = qs(".chosensort").id;
     let search = id("searchtext").value.trim().toLowerCase();
-    let priObj = !id("hasPrimer").checked;
-    let discObj = !id("hasDiscord").checked;
+    let cur = id("searchcurators").value.trim().toLowerCase();
+    let priObj = id("hasPrimer").classList.contains("active");
+    let discObj = id("hasDiscord").classList.contains("active");
 
     for (let i in database) {
       let entry = database[i];
@@ -101,11 +114,16 @@ The javascript for the databases in the cEDH Decklist Database.
 
       let hasPrimer = (entry.primer.includes("Y")) || !priObj;
       let hasDiscord = (entry.discord != "NA") || !discObj;
-      if (hasPrimer &&  (hasDiscord && searched)) {
+      let matches = false;
+      for (let i in entry.curators) {
+        if (entry.curators[i].toLowerCase().trim().includes(cur)) {
+          matches = true;
+        }
+      }
+      if (hasPrimer && hasDiscord && searched && matches) {
         addRow(entry, i);
       }
     }
-
     sortRows(sort);
   }
 
@@ -125,7 +143,6 @@ The javascript for the databases in the cEDH Decklist Database.
     entryRow.classList.add("entry");
     document.getElementById("entries").appendChild(entryRow);
 
-
     let colors = document.createElement("td");
     colors.classList = "colors";
     let colorSplit = entry.colors.toLowerCase().split("");
@@ -141,23 +158,6 @@ The javascript for the databases in the cEDH Decklist Database.
       colors.appendChild(image);
     }
     entryRow.appendChild(colors);
-
-    /*
-    let colors = document.createElement("td");
-    colors.classList = "colors";
-    let colorSplit = entry.colors.toLowerCase().split("");
-    for (let i = 0; i < 5; i++) {
-      let letter = "blank";
-      if (colorSplit[i]) {
-        letter = colorSplit[i]
-      }
-      let image = document.createElement("img");
-      image.src="img/mana/" + letter + ".png";
-      image.alt = letter;
-      colors.appendChild(image);
-    }
-    entryRow.appendChild(colors);
-    */
 
     entryRow.appendChild(addBasicData(entry, "strategy"));
     entryRow.appendChild(addBasicData(entry, "commander"));
