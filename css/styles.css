@@ -266,7 +266,9 @@ body {
 .linkDiv {
   border: 2px solid white;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 15px;
   align-items: center;
 }
 
