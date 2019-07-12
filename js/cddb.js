@@ -7,7 +7,7 @@ The javascript for the databases in the cEDH Decklist Database.
   "use strict";
 
   const BASE_URL = "https://sheets.googleapis.com/v4/spreadsheets/1NYZ2g0ETfGulhPKYAKrKTPjviaLERKuvyKyk9oizV8Q/values/";
-  const PARAMS = "!A2:I?key=AIzaSyCy2pE5znDZ9uDdpSgYb2Q992r0YOIPuIw";
+  const PARAMS = "!A2:J?key=AIzaSyCy2pE5znDZ9uDdpSgYb2Q992r0YOIPuIw";
   let database;
 
   window.addEventListener("load", init);
@@ -35,10 +35,6 @@ The javascript for the databases in the cEDH Decklist Database.
    * @param {object} response - The response from the API
    */
   function populateDatabase(response) {
-    let sorts = qsa("thead th button");
-    sorts.forEach(function(button) {
-      button.addEventListener("click", activateSort);
-    });
     id("searchtext").addEventListener("input", updateDatabase);
     id("searchcurators").addEventListener("input", updateDatabase);
 
@@ -59,6 +55,7 @@ The javascript for the databases in the cEDH Decklist Database.
       row.colors = entry[6].replace(" ", "").replace(",", "");
       row.discord = entry[7].trim().split(", ");
       row.curators = entry[8].trim().split(", ");
+      row.date = entry[9].trim().split(" ")[0];
       temp.push(row);
     }
     database = temp;
@@ -79,28 +76,12 @@ The javascript for the databases in the cEDH Decklist Database.
   * @param {object} this - The button which was clicked
   */
   function activateSort() {
-    let sorts = qsa("thead th button");
-    let choice = this.id;
-    sorts.forEach(function(button) {
-      let id = button.id;
-      if (id === choice) {
-        button.classList.remove("btn-primary");
-        button.classList.add("btn-secondary");
-        button.classList.add("chosensort");
-      } else {
-        button.classList.add("btn-primary");
-        button.classList.remove("btn-secondary");
-        button.classList.remove("chosensort");
-      }
-    });
-    updateDatabase();
   }
 
   /** Uses the search parameters and updates the database.
   */
   function updateDatabase() {
     id("entries").innerHTML = "";
-    let sort = qs(".chosensort").id;
     let search = id("searchtext").value.trim().toLowerCase();
     let cur = id("searchcurators").value.trim().toLowerCase();
     let priObj = id("hasPrimer").classList.contains("active");
@@ -124,12 +105,6 @@ The javascript for the databases in the cEDH Decklist Database.
         addRow(entry, i);
       }
     }
-    sortRows(sort);
-  }
-
-  /* TODO: Add sort function */
-  function sortRows(sort) {
-
   }
 
   /* Adds a single row to the database */
@@ -187,7 +162,16 @@ The javascript for the databases in the cEDH Decklist Database.
     let curators = document.createElement("p");
     curators.innerText = entry.curators.join(", ");
     curators.classList = "curators";
-    sub.appendChild(curators);
+
+    let date = document.createElement("p");
+    date.innerText = "Date Added: " + entry.date;
+    date.classList = "date";
+
+    let holder = document.createElement("div");
+    holder.appendChild(date);
+    holder.appendChild(curators);
+    holder.classList = "holder";
+    sub.appendChild(holder);
   }
 
   function addBasicData(entry, data) {
@@ -260,10 +244,19 @@ The javascript for the databases in the cEDH Decklist Database.
         link.innerText = "Alternate List";
       }
       let primers = entry.primer;
+      let linkDiv = document.createElement("div");
+      linkDiv.classList = "linkDiv";
+      let primerImg = document.createElement("img");
+      primerImg.src = "img/primer.png";
       if (primers[i] === "Y") {
-        link.innerText = link.innerText + " [P]"
+        primerImg.alt = "Primer";
+      } else {
+        primerImg.classList.add("darkened");
+        primerImg.alt = "No primer";
       }
-      decklists.appendChild(link);
+      linkDiv.appendChild(primerImg);
+      linkDiv.appendChild(link);
+      decklists.appendChild(linkDiv);
     }
 
     return decklists;
@@ -307,7 +300,6 @@ The javascript for the databases in the cEDH Decklist Database.
         } else {
           let text = document.createElement("p");
           text.innerText = "Alternate";
-          link.appendChild(icon);
           link.appendChild(text);
           discord.appendChild(link);
         }
