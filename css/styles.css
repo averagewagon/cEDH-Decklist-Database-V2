@@ -136,6 +136,7 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: space-evenly;
+  border: none !important;
 }
 
 .primerImage {
