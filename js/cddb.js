@@ -7,7 +7,7 @@ The javascript for the databases in the cEDH Decklist Database.
   "use strict";
 
   const BASE_URL = "https://sheets.googleapis.com/v4/spreadsheets/1NYZ2g0ETfGulhPKYAKrKTPjviaLERKuvyKyk9oizV8Q/values/";
-  const PARAMS = "!A2:J?key=AIzaSyCy2pE5znDZ9uDdpSgYb2Q992r0YOIPuIw";
+  const PARAMS = "!A2:K?key=AIzaSyCy2pE5znDZ9uDdpSgYb2Q992r0YOIPuIw";
   let database;
 
   window.addEventListener("load", init);
