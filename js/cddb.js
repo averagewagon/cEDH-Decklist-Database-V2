@@ -103,7 +103,6 @@ The javascript for the databases in the cEDH Decklist Database.
       let toRemove = [];
 
       for (let i in temp) {
-        console.log("Loop");
         let entry = temp[i];
         let searched = ((entry.commander.toLowerCase().includes(search)
             || entry.deckname.toLowerCase().includes(search))
