@@ -72,7 +72,11 @@ body {
 }
 
 #searchtext {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+#searchtext, #searchcurators {
+  height: 52px;
 }
 
 #switches {
@@ -102,6 +106,7 @@ body {
 
 #database {
   font-family: 'IBM Plex Mono', monospace;
+  margin-bottom: 350px;
 }
 
 #database thead button {
