@@ -215,11 +215,13 @@ The javascript for the databases in the cEDH Decklist Database.
       link1.classList = "commanderLink";
       link1.href = DECKBOX + partners[0];
       link1.innerText = partners[0] + " /";
+      link1.target = "_blank";
 
       let link2 = document.createElement("a");
       link2.classList = "commanderLink";
       link2.href = DECKBOX + partners[1];
       link2.innerText = " " + partners[1];
+      link2.target = "_blank";
 
       wrapper.appendChild(link1);
       wrapper.appendChild(link2);
@@ -228,6 +230,7 @@ The javascript for the databases in the cEDH Decklist Database.
       link.classList = "commanderLink";
       link.href = DECKBOX + entry.commander.trim();
       link.innerText = entry.commander;
+      link.target = "_blank";
       wrapper.appendChild(link);
     }
 
