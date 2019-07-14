@@ -97,16 +97,8 @@ body {
   font-size: 14pt;
 }
 
-#clr {
-  width: 16%;
-}
-
-#strt {
-  width: 15%;
-}
-
-#dnm {
-  width: 34%;
+th h3 {
+  padding-top: 8px;
 }
 
 /* Database entry row */
@@ -117,11 +109,39 @@ body {
   font-weight: bold;
 }
 
+.entry td div {
+  padding-top: 4px;
+}
+
+.meta {
+  width: 190px;
+}
+
+.meta img {
+  height: 30px;
+  margin-bottom: 5px;
+}
+
+.commanderLink {
+  color: lightblue;
+}
+
+.icons {
+  width: 230px;
+  min-width: 230px;
+}
+
 .entry:hover {
   cursor: pointer;
 }
 
 .colors {
+  width: 180px;
+  margin: auto;
+}
+
+.colors div {
+  width: 180px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -132,22 +152,22 @@ body {
   height: 30px;
 }
 
-.deckname {
-  display: flex;
-  justify-content: flex-start;
-  align-items: space-evenly;
-  border: none !important;
-}
-
 .primerImage {
   height: 30px;
-  margin-right: 8px;
+  margin-right: 10px;
+  margin-bottom: 8px;
 }
 
 .discordImage {
   height: 22px;
   margin-top: 6px;
-  margin-right: 12px;
+  margin-right: 14px;
+  margin-bottom: 8px;
+}
+
+.strat {
+  height: 35px;
+  margin-bottom: 5px;
 }
 
 /* Database info row */

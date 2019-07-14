@@ -9,6 +9,8 @@ The javascript for the databases in the cEDH Decklist Database.
   const BASE_URL = "https://sheets.googleapis.com/v4/spreadsheets/1NYZ2g0ETfGulhPKYAKrKTPjviaLERKuvyKyk9oizV8Q/values/";
   const PARAMS = "!A2:K?key=AIzaSyCy2pE5znDZ9uDdpSgYb2Q992r0YOIPuIw";
   let database;
+  const DECKBOX = "https://deckbox.org/mtg/";
+  const PARTNERS = {"Akiri" : "Akiri, Line-Slinger","Bruse Tarl" : "Bruse Tarl, Boorish Herder","Gorm" : "Gorm the Great","Ikra Shidiqi" : "Ikra Shidiqi, the Usurper","Ishai" : "Ishai, Ojutai Dragonspeaker","Khorvath" : "Khorvath Brightflame","Kraum" : "Kraum, Ludevic's Opus","Krav" : "Krav, the Unredeemed","Kydele" : "Kydele, Chosen of Kruphix","Ludevic" : "Ludevic, Necro-Alchemist","Okaun" : "Okaun, Eye of Chaos","Pir" : "Pir, Imaginative Rascal","Ravos" : "Ravos, Soultender","Regna" : "Regna, the Redeemer","Reyhan" : "Reyhan, Last of the Abzan","Rowan" : "Rowan Kenrith","Sidar Kondo" : "Sidar Kondo of Jamuraa","Silas Renn" : "Silas Renn, Seeker Adept","Sylvia" : "Sylvia Brightspear","Tana" : "Tana, the Bloodsower","Thrasios" : "Thrasios, Triton Hero","Toothy" : "Toothy, Imaginary Friend","Tymna" : "Tymna, the Weaver","Vial Smasher" : "Vial Smasher the Fierce","Virtus" : "Virtus the Veiled","Will" : "Will Kenrith","Zndrsplt" : "Zndrsplt, Eye of Wisdom"}
 
   window.addEventListener("load", init);
 
@@ -56,6 +58,11 @@ The javascript for the databases in the cEDH Decklist Database.
       row.discord = entry[7].trim().split(", ");
       row.curators = entry[8].trim().split(", ");
       row.date = entry[9].trim().split(" ")[0];
+      if (entry[10].includes(",")) {
+        row.meta = "flex";
+      } else {
+        row.meta = entry[10].split(" ")[0].toLowerCase();
+      }
       temp.push(row);
     }
     database = temp;
@@ -118,32 +125,18 @@ The javascript for the databases in the cEDH Decklist Database.
     entryRow.classList.add("entry");
     document.getElementById("entries").appendChild(entryRow);
 
-    let colors = document.createElement("td");
-    colors.classList = "colors";
-    let colorSplit = entry.colors.toLowerCase().split("");
-    let colorArray = ["w", "u", "b", "r", "g"];
-    for (let i = 0; i < 5; i++) {
-      let letter = colorArray[i];
-      let image = document.createElement("img");
-      if (!colorSplit.includes(letter)) {
-        letter = "d";
-      }
-      image.src= "img/mana/" + letter + ".png";
-      image.alt = letter;
-      colors.appendChild(image);
-    }
-    entryRow.appendChild(colors);
-
-    entryRow.appendChild(addBasicData(entry, "strategy"));
-    entryRow.appendChild(addBasicData(entry, "commander"));
-    entryRow.appendChild(addBasicData(entry, "deckname"));
+    entryRow.appendChild(addColors(entry));
+    entryRow.appendChild(addMeta(entry));
+    entryRow.appendChild(addCommanders(entry));
+    entryRow.appendChild(addDeckName(entry));
+    entryRow.appendChild(addIcons(entry));
 
     let infoRow = document.createElement("tr");
     infoRow.classList = "info table-secondary";
     document.getElementById("entries").appendChild(infoRow);
 
     let td = document.createElement("td");
-    td.colSpan = "4";
+    td.colSpan = "5";
     infoRow.appendChild(td);
 
     let sub = document.createElement("div");
@@ -172,6 +165,118 @@ The javascript for the databases in the cEDH Decklist Database.
     holder.appendChild(curators);
     holder.classList = "holder";
     sub.appendChild(holder);
+  }
+
+  /* Takes a row info, returns a div which represents the colors */
+  function addColors(entry) {
+    let colors = document.createElement("td");
+    colors.classList = "colors";
+    let wrapper = document.createElement("div");
+    let colorSplit = entry.colors.toLowerCase().split("");
+    let colorArray = ["w", "u", "b", "r", "g"];
+    for (let i = 0; i < 5; i++) {
+      let letter = colorArray[i];
+      let image = document.createElement("img");
+      if (!colorSplit.includes(letter)) {
+        letter = "d";
+      }
+      image.src= "img/mana/" + letter + ".png";
+      image.alt = letter;
+      wrapper.appendChild(image);
+    }
+    colors.appendChild(wrapper);
+    return colors;
+  }
+
+  function addMeta(entry) {
+    let meta = document.createElement("td");
+    meta.classList = "meta";
+    let wrapper = document.createElement("div");
+    meta.appendChild(wrapper);
+    let img = document.createElement("img");
+    img.src = "img/" + entry.meta + ".png";
+    img.alt = entry.meta + " meta";
+    wrapper.appendChild(img);
+    return meta;
+  }
+
+  function addCommanders(entry) {
+    let commander = document.createElement("td");
+    commander.classList = "commander";
+    let wrapper = document.createElement("div");
+    commander.appendChild(wrapper);
+
+    if (entry.commander.includes("/")) {
+      let partners = entry.commander.split("/");
+      partners[0].trim();
+      partners[1].trim();
+
+      let link1 = document.createElement("a");
+      link1.classList = "commanderLink";
+      link1.href = DECKBOX + partners[0];
+      link1.innerText = partners[0] + " /";
+
+      let link2 = document.createElement("a");
+      link2.classList = "commanderLink";
+      link2.href = DECKBOX + partners[1];
+      link2.innerText = " " + partners[1];
+
+      wrapper.appendChild(link1);
+      wrapper.appendChild(link2);
+    } else {
+      let link = document.createElement("a");
+      link.classList = "commanderLink";
+      link.href = DECKBOX + entry.commander.trim();
+      link.innerText = entry.commander;
+      wrapper.appendChild(link);
+    }
+
+    return commander;
+  }
+
+  function addDeckName(entry) {
+    let deckname = document.createElement("td");
+    deckname.classList = "deckname";
+    let wrapper = document.createElement("div");
+    deckname.appendChild(wrapper);
+    wrapper.innerText = entry.deckname;
+    return deckname;
+  }
+
+  function addIcons(entry) {
+    let icons = document.createElement("td");
+    icons.classList = "icons";
+
+    let primer = document.createElement("img");
+    primer.src = "img/primer.png";
+    primer.classList = "primerImage";
+    if (!entry.primer.includes("Y")) {
+      primer.classList.add("darkened");
+      primer.alt = "no primer";
+    } else {
+      primer.alt = "primer";
+    }
+    icons.appendChild(primer);
+
+    let discord = document.createElement("img");
+    discord.src = "img/hasdiscord.png";
+    discord.classList = "discordImage";
+    if (entry.discord == "NA") {
+      discord.classList.add("darkened");
+      discord.alt = "no Discord";
+    } else {
+      discord.alt = "Discord";
+    }
+    icons.appendChild(discord);
+
+    let strat = document.createElement("img");
+    let s = entry.strategy.toLowerCase();
+    strat.src = "img/" + s + ".png";
+    strat.classList = "strat";
+    strat.alt = entry.strategy;
+    icons.appendChild(strat);
+
+    return icons;
   }
 
   function addBasicData(entry, data) {
