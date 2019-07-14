@@ -8,9 +8,11 @@ The javascript for the databases in the cEDH Decklist Database.
 
   const BASE_URL = "https://sheets.googleapis.com/v4/spreadsheets/1NYZ2g0ETfGulhPKYAKrKTPjviaLERKuvyKyk9oizV8Q/values/";
   const PARAMS = "!A2:K?key=AIzaSyCy2pE5znDZ9uDdpSgYb2Q992r0YOIPuIw";
-  let database;
   const DECKBOX = "https://deckbox.org/mtg/";
-  const PARTNERS = {"Akiri" : "Akiri, Line-Slinger","Bruse Tarl" : "Bruse Tarl, Boorish Herder","Gorm" : "Gorm the Great","Ikra Shidiqi" : "Ikra Shidiqi, the Usurper","Ishai" : "Ishai, Ojutai Dragonspeaker","Khorvath" : "Khorvath Brightflame","Kraum" : "Kraum, Ludevic's Opus","Krav" : "Krav, the Unredeemed","Kydele" : "Kydele, Chosen of Kruphix","Ludevic" : "Ludevic, Necro-Alchemist","Okaun" : "Okaun, Eye of Chaos","Pir" : "Pir, Imaginative Rascal","Ravos" : "Ravos, Soultender","Regna" : "Regna, the Redeemer","Reyhan" : "Reyhan, Last of the Abzan","Rowan" : "Rowan Kenrith","Sidar Kondo" : "Sidar Kondo of Jamuraa","Silas Renn" : "Silas Renn, Seeker Adept","Sylvia" : "Sylvia Brightspear","Tana" : "Tana, the Bloodsower","Thrasios" : "Thrasios, Triton Hero","Toothy" : "Toothy, Imaginary Friend","Tymna" : "Tymna, the Weaver","Vial Smasher" : "Vial Smasher the Fierce","Virtus" : "Virtus the Veiled","Will" : "Will Kenrith","Zndrsplt" : "Zndrsplt, Eye of Wisdom"}
+  const PARTNERS = {"Akiri" : "Akiri, Line-Slinger","Bruse Tarl" : "Bruse Tarl, Boorish Herder","Gorm" : "Gorm the Great","Ikra Shidiqi" : "Ikra Shidiqi, the Usurper","Ishai" : "Ishai, Ojutai Dragonspeaker","Khorvath" : "Khorvath Brightflame","Kraum" : "Kraum, Ludevic's Opus","Krav" : "Krav, the Unredeemed","Kydele" : "Kydele, Chosen of Kruphix","Ludevic" : "Ludevic, Necro-Alchemist","Okaun" : "Okaun, Eye of Chaos","Pir" : "Pir, Imaginative Rascal","Ravos" : "Ravos, Soultender","Regna" : "Regna, the Redeemer","Reyhan" : "Reyhan, Last of the Abzan","Rowan" : "Rowan Kenrith","Sidar Kondo" : "Sidar Kondo of Jamuraa","Silas Renn" : "Silas Renn, Seeker Adept","Sylvia" : "Sylvia Brightspear","Tana" : "Tana, the Bloodsower","Thrasios" : "Thrasios, Triton Hero","Toothy" : "Toothy, Imaginary Friend","Tymna" : "Tymna, the Weaver","Vial Smasher" : "Vial Smasher the Fierce","Virtus" : "Virtus the Veiled","Will" : "Will Kenrith","Zndrsplt" : "Zndrsplt, Eye of Wisdom"};
+  const COLOR_ORDER = ["W", "U", "B", "R", "G", "WU", "UB", "BR", "RG", "WG", "WB", "UR", "BG", "RW", "UG", "WUB", "UBR", "BRG", "WRG", "WUG", "WBG", "WUR", "UBG", "WBR", "URG", "UBRG", "WBRG", "WURG", "WUBG", "WUBR", "WUBRG"];
+
+  let database;
 
   window.addEventListener("load", init);
 
@@ -54,7 +56,7 @@ The javascript for the databases in the cEDH Decklist Database.
       row.deckname = entry[2];
       row.commander = entry[4];
       row.description = entry[5];
-      row.colors = entry[6].replace(" ", "").replace(",", "");
+      row.colors = entry[6].split(",").join("").split(" ").join("").trim();
       row.discord = entry[7].trim().split(", ");
       row.curators = entry[8].trim().split(", ");
       row.date = entry[9].trim().split(" ")[0];
@@ -94,23 +96,39 @@ The javascript for the databases in the cEDH Decklist Database.
     let priObj = id("hasPrimer").classList.contains("active");
     let discObj = id("hasDiscord").classList.contains("active");
 
-    for (let i in database) {
-      let entry = database[i];
-      let searched = ((entry.commander.toLowerCase().includes(search)
-          || entry.deckname.toLowerCase().includes(search))
-          || entry.description.toLowerCase().includes(search));
+    let temp = database.slice(0);
 
-      let hasPrimer = (entry.primer.includes("Y")) || !priObj;
-      let hasDiscord = (entry.discord != "NA") || !discObj;
-      let matches = false;
-      for (let i in entry.curators) {
-        if (entry.curators[i].toLowerCase().trim().includes(cur)) {
-          matches = true;
+    for (let i in COLOR_ORDER) {
+      let color = COLOR_ORDER[i];
+      let toRemove = [];
+
+      for (let i in temp) {
+        console.log("Loop");
+        let entry = temp[i];
+        let searched = ((entry.commander.toLowerCase().includes(search)
+            || entry.deckname.toLowerCase().includes(search))
+            || entry.description.toLowerCase().includes(search));
+
+        let hasPrimer = (entry.primer.includes("Y")) || !priObj;
+        let hasDiscord = (entry.discord != "NA") || !discObj;
+        let matches = false;
+        for (let i in entry.curators) {
+          if (entry.curators[i].toLowerCase().trim().includes(cur)) {
+            matches = true;
+          }
+        }
+
+        let sorted = (color == entry.colors);
+
+        if (hasPrimer && hasDiscord && searched && matches && sorted) {
+          addRow(entry, i);
+          toRemove.push(entry);
         }
       }
-      if (hasPrimer && hasDiscord && searched && matches) {
-        addRow(entry, i);
-      }
+
+      temp = temp.filter(function(el) {
+        return !toRemove.includes(el);
+      });
     }
   }
 
