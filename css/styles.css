@@ -31,10 +31,6 @@ body {
   flex-direction: column;
 }
 
-#navbar {
-  display: block;
-}
-
 #logo {
   width: 305px;
 }
@@ -42,6 +38,11 @@ body {
 #logo img {
   width: 14%;
   margin-right: 20px;
+}
+
+.navbar-toggler {
+  width: 200px;
+  margin: 0 auto;
 }
 
 .navbar-text {
