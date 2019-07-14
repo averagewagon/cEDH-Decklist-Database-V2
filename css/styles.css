@@ -42,7 +42,8 @@ body {
 
 .navbar-toggler {
   width: 200px;
-  margin: 0 auto;
+  margin: 14px auto;
+  background-color: #272B30;
 }
 
 .navbar-text {
