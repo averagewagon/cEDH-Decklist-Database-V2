@@ -100,7 +100,6 @@ The javascript for the databases in the cEDH Decklist Database.
 
     for (let i in COLOR_ORDER) {
       let color = COLOR_ORDER[i];
-      let toRemove = [];
 
       for (let i in temp) {
         let entry = temp[i];
@@ -121,13 +120,8 @@ The javascript for the databases in the cEDH Decklist Database.
 
         if (hasPrimer && hasDiscord && searched && matches && sorted) {
           addRow(entry, i);
-          toRemove.push(entry);
         }
       }
-
-      temp = temp.filter(function(el) {
-        return !toRemove.includes(el);
-      });
     }
   }
 
