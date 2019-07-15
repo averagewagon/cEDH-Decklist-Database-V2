@@ -14,14 +14,7 @@ The javascript for the databases in the cEDH Decklist Database.
 
   let database;
 
-  window.addEventListener("load", init);
-
-  /**
-  * @description {Initializes the code and adds event listeners}
-  */
-  function init() {
-    loadDatabase();
-  }
+  window.addEventListener("load", loadDatabase);
 
   /** Gets the table from the API in order to display it on the webpage. */
   function loadDatabase() {
@@ -81,12 +74,6 @@ The javascript for the databases in the cEDH Decklist Database.
     updateDatabase();
   }
 
-  /** Refetches the database according to the search.
-  * @param {object} this - The button which was clicked
-  */
-  function activateSort() {
-  }
-
   /** Uses the search parameters and updates the database.
   */
   function updateDatabase() {
@@ -109,6 +96,7 @@ The javascript for the databases in the cEDH Decklist Database.
 
         let hasPrimer = (entry.primer.includes("Y")) || !priObj;
         let hasDiscord = (entry.discord != "NA") || !discObj;
+
         let matches = false;
         for (let i in entry.curators) {
           if (entry.curators[i].toLowerCase().trim().includes(cur)) {
@@ -201,7 +189,7 @@ The javascript for the databases in the cEDH Decklist Database.
 
   function addMeta(entry) {
     let meta = document.createElement("td");
-    meta.classList = "meta";
+    meta.classList = "meta " + entry.meta + "-meta";
     let wrapper = document.createElement("div");
     meta.appendChild(wrapper);
     let img = document.createElement("img");
@@ -291,41 +279,6 @@ The javascript for the databases in the cEDH Decklist Database.
     icons.appendChild(strat);
 
     return icons;
-  }
-
-  function addBasicData(entry, data) {
-    let adding = document.createElement("td");
-    adding.classList = data;
-    if (data == "deckname") {
-      let image = document.createElement("img");
-      image.src = "img/primer.png";
-      image.classList.add("primerImage");
-      if (entry.primer.includes("Y")) {
-        image.alt = "primer";
-      } else {
-        image.classList.add("darkened");
-        image.alt = "no primer";
-      }
-      adding.appendChild(image);
-
-      let dimage = document.createElement("img");
-      dimage.src = "img/hasdiscord.png";
-      dimage.classList = "discordImage";
-      if (!entry.discord.includes("NA")) {
-        dimage.alt = "discord";
-      } else {
-        dimage.classList.add("darkened");
-        image.alt = "no discord";
-      }
-      adding.appendChild(dimage);
-
-      let text = document.createElement("div");
-      text.innerText = entry[data];
-      adding.appendChild(text);
-    } else {
-      adding.innerText = entry[data];
-    }
-    return adding;
   }
 
   function addDescription(entry) {
@@ -426,6 +379,8 @@ The javascript for the databases in the cEDH Decklist Database.
     }
     return discord;
   }
+
+  /* HELPER FUNCTIONS */
 
   /** Prints and error's content to the webpage
   * @param {string} info - the error information that should be passed
