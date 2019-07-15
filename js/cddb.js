@@ -9,7 +9,7 @@ The javascript for the databases in the cEDH Decklist Database.
   const BASE_URL = "https://sheets.googleapis.com/v4/spreadsheets/1NYZ2g0ETfGulhPKYAKrKTPjviaLERKuvyKyk9oizV8Q/values/";
   const PARAMS = "!A2:K?key=AIzaSyCy2pE5znDZ9uDdpSgYb2Q992r0YOIPuIw";
   const DECKBOX = "https://deckbox.org/mtg/";
-  const PARTNERS = {"Akiri" : "Akiri, Line-Slinger","Bruse Tarl" : "Bruse Tarl, Boorish Herder","Gorm" : "Gorm the Great","Ikra Shidiqi" : "Ikra Shidiqi, the Usurper","Ishai" : "Ishai, Ojutai Dragonspeaker","Khorvath" : "Khorvath Brightflame","Kraum" : "Kraum, Ludevic's Opus","Krav" : "Krav, the Unredeemed","Kydele" : "Kydele, Chosen of Kruphix","Ludevic" : "Ludevic, Necro-Alchemist","Okaun" : "Okaun, Eye of Chaos","Pir" : "Pir, Imaginative Rascal","Ravos" : "Ravos, Soultender","Regna" : "Regna, the Redeemer","Reyhan" : "Reyhan, Last of the Abzan","Rowan" : "Rowan Kenrith","Sidar Kondo" : "Sidar Kondo of Jamuraa","Silas Renn" : "Silas Renn, Seeker Adept","Sylvia" : "Sylvia Brightspear","Tana" : "Tana, the Bloodsower","Thrasios" : "Thrasios, Triton Hero","Toothy" : "Toothy, Imaginary Friend","Tymna" : "Tymna, the Weaver","Vial Smasher" : "Vial Smasher the Fierce","Virtus" : "Virtus the Veiled","Will" : "Will Kenrith","Zndrsplt" : "Zndrsplt, Eye of Wisdom"};
+  const PARTNERS = {"Akiri" : "Akiri, Line-Slinger","Bruse Tarl" : "Bruse Tarl, Boorish Herder","Gorm" : "Gorm the Great","Ikra Shidiqi" : "Ikra Shidiqi, the Usurper","Ishai" : "Ishai, Ojutai Dragonspeaker","Khorvath" : "Khorvath Brightflame","Kraum" : "Kraum, Ludevic's Opus","Krav" : "Krav, the Unredeemed","Kydele" : "Kydele, Chosen of Kruphix","Ludevic" : "Ludevic, Necro-Alchemist","Okaun" : "Okaun, Eye of Chaos","Pir" : "Pir, Imaginative Rascal","Ravos" : "Ravos, Soultender","Regna" : "Regna, the Redeemer","Reyhan" : "Reyhan, Last of the Abzan","Rowan" : "Rowan Kenrith","Sidar Kondo" : "Sidar Kondo of Jamuraa","Silas Renn" : "Silas Renn, Seeker Adept","Sylvia" : "Sylvia Brightspear","Tana" : "Tana, the Bloodsower","Thrasios" : "Thrasios, Triton Hero","Toothy" : "Toothy, Imaginary Friend","Tymna" : "Tymna the Weaver","Vial Smasher" : "Vial Smasher the Fierce","Virtus" : "Virtus the Veiled","Will" : "Will Kenrith","Zndrsplt" : "Zndrsplt, Eye of Wisdom"};
   const COLOR_ORDER = ["W", "U", "B", "R", "G", "WU", "UB", "BR", "RG", "WG", "WB", "UR", "BG", "RW", "UG", "WUB", "UBR", "BRG", "WRG", "WUG", "WBG", "WUR", "UBG", "WBR", "URG", "UBRG", "WBRG", "WURG", "WUBG", "WUBR", "WUBRG"];
 
   let database;
@@ -83,13 +83,11 @@ The javascript for the databases in the cEDH Decklist Database.
     let priObj = id("hasPrimer").classList.contains("active");
     let discObj = id("hasDiscord").classList.contains("active");
 
-    let temp = database.slice(0);
-
     for (let i in COLOR_ORDER) {
       let color = COLOR_ORDER[i];
 
-      for (let i in temp) {
-        let entry = temp[i];
+      for (let i in database) {
+        let entry = database[i];
         let searched = ((entry.commander.toLowerCase().includes(search)
             || entry.deckname.toLowerCase().includes(search))
             || entry.description.toLowerCase().includes(search));
@@ -207,19 +205,19 @@ The javascript for the databases in the cEDH Decklist Database.
 
     if (entry.commander.includes("/")) {
       let partners = entry.commander.split("/");
-      partners[0].trim();
-      partners[1].trim();
+      let p1 = partners[0].trim();
+      let p2 = partners[1].trim();
 
       let link1 = document.createElement("a");
       link1.classList = "commanderLink";
-      link1.href = DECKBOX + partners[0];
-      link1.innerText = partners[0] + " /";
+      link1.href = DECKBOX + PARTNERS[[p1]];
+      link1.innerText = p1 + " /";
       link1.onclick = function() {return false;};
 
       let link2 = document.createElement("a");
       link2.classList = "commanderLink";
-      link2.href = DECKBOX + partners[1];
-      link2.innerText = " " + partners[1];
+      link2.href = DECKBOX + PARTNERS[p2];
+      link2.innerText = " " + p2;
       link2.onclick = function() {return false;};
 
       wrapper.appendChild(link1);
