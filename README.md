@@ -14,14 +14,14 @@ Completed Features:
 - Search functionality
 - Date added feature
 - Author search
+- Deck admission guidelines
 
 Planned Features:
-- Deck admission guidelines
-- Filter to colors w/ selectable color bars
-- Descriptions above databases
 - Resources tab, with links to cEDH resources
 
 Potential Additions:
 - Decklist "recently updated" feature, scraping lists that have been updated in the past 3 months
 - Different website icon
 - Change font
+- Descriptions above databases
+- Filter to colors w/ selectable color bars
