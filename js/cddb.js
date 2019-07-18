@@ -388,7 +388,7 @@ The javascript for the databases in the cEDH Decklist Database.
     let error = document.createElement("td");
     error.innerText = "Sorry, the request to our database failed with the error:\n"
                       + info;
-    error.colSpan = "4";
+    error.colSpan = "5";
     let row = document.createElement("tr");
     row.appendChild(error);
     id("entries").appendChild(row);

@@ -37,12 +37,12 @@
   <body>
     <div id="wrapper">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbar">
           <a class="navbar-brand" href="#" id="logo">
-            <img src="img/phy.png">
+            <img src="img/phy.png" alt="logo">
             cEDH Decklist Database
           </a>
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -74,6 +74,7 @@
               <span>Discord Server</span>
               <img src="img/discord.png" alt="Discord Image">
             </a>
+          </span>
         </div>
       </nav>
 
@@ -82,13 +83,9 @@
           <h2>Primary</h2>
           <h3>Reliable and trusted lists.</h3>
           <p>
-            This is a description of the various parts of the database.
-            It tells people who are new to the database what each column means,
-            and how to easily navigate the database to find what they want.
-            In the future, this will also hold the search feature for the database,
-            allowing individuals to search names, descriptions, and
-            commanders. You can also filter lists to ones that contain colors,
-            a strategy, or if a list has a primer.
+            The Decklist Database is currently in its open beta. If there are any mistakes
+            in the database, or you would be interested in helping us write new descriptions
+            for old lists, please join our Discord server, linked in the top right.
           </p>
 
           <div id="searchform">
@@ -111,11 +108,13 @@
 
         <table id="database" class="table table-hover table-striped">
           <thead class="thead-dark">
-            <th id="clr"><h3>Colors</h3></th>
-            <th id="strt"><h3>Meta</h3></th>
-            <th id="cmd"><h3>Commander</h3></th>
-            <th id="dnm"><h3>Deck Name</h3></th>
-            <th id="icons"><h3>Info</h3></th>
+            <tr>
+              <th id="clr">Colors</th>
+              <th id="strt">Meta</th>
+              <th id="cmd">Commander</th>
+              <th id="dnm">Deck Name</th>
+              <th id="icons">Info</th>
+            </tr>
           </thead>
           <tbody id="entries">
           </tbody>

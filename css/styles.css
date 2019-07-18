@@ -40,6 +40,10 @@ body {
   margin-right: 20px;
 }
 
+nav {
+  width: 100%;
+}
+
 .navbar-toggler {
   width: 200px;
   margin: 14px auto;
@@ -63,6 +67,10 @@ body {
 /* Database Styles */
 #dbinfo {
   margin-top: 20px;
+}
+
+#dbinfo p {
+  width: 55%;
 }
 
 #searchform {
@@ -97,6 +105,8 @@ body {
 
 #hasDiscord {
   margin-top: 8px;
+  height: 56px;
+  overflow: hidden;
 }
 
 #hasDiscord, #hasPrimer {
@@ -125,8 +135,9 @@ body {
   font-size: 14pt;
 }
 
-th h3 {
+tr th {
   padding-top: 8px;
+  font-size: 20pt;
 }
 
 /* Database entry row */
