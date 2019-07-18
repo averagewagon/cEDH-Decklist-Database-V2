@@ -54,7 +54,7 @@ The javascript for the databases in the cEDH Decklist Database.
       row.curators = entry[8].trim().split(", ");
       row.date = entry[9].trim().split(" ")[0];
       if (entry[10].includes(",")) {
-        row.meta = "flex";
+        row.meta = "flexible";
       } else {
         row.meta = entry[10].split(" ")[0].toLowerCase();
       }
@@ -88,9 +88,11 @@ The javascript for the databases in the cEDH Decklist Database.
 
       for (let i in database) {
         let entry = database[i];
-        let searched = ((entry.commander.toLowerCase().includes(search)
-            || entry.deckname.toLowerCase().includes(search))
-            || entry.description.toLowerCase().includes(search));
+        let searched = (entry.commander.toLowerCase().includes(search)
+            || entry.deckname.toLowerCase().includes(search)
+            || entry.description.toLowerCase().includes(search)
+            || entry.meta.toLowerCase().includes(search)
+            || entry.strategy.toLowerCase().includes(search));
 
         let hasPrimer = (entry.primer.includes("Y")) || !priObj;
         let hasDiscord = (entry.discord != "NA") || !discObj;
