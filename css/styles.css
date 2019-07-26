@@ -140,6 +140,10 @@ tr th {
   font-size: 20pt;
 }
 
+.deckname {
+  width: 35%;
+}
+
 /* Database entry row */
 .entry {
   border: 3px solid black;
@@ -150,15 +154,6 @@ tr th {
 
 .entry td div {
   padding-top: 4px;
-}
-
-.meta {
-  width: 190px;
-}
-
-.meta img {
-  height: 30px;
-  margin-bottom: 5px;
 }
 
 .commanderLink {

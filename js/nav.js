@@ -22,26 +22,11 @@ The javascript for the navbar in the cEDH Decklist Database.
       id("resources").classList.add("active");
     } else if (window.location.href.indexOf("outdated") > -1) {
       id("outdated").classList.add("active");
-    } else if (window.location.href.indexOf("rejected") > -1) {
-      id("rejected").classList.add("active");
     } else if (window.location.href.indexOf("memes") > -1) {
       id("memes").classList.add("active");
     } else {
       window.location.href = "primary.html";
     }
-
-    id("primary").addEventListener("click", () => {
-      window.location.href = "primary.html";
-    });
-    id("fringe").addEventListener("click", () => {
-      window.location.href = "fringe.html";
-    });
-    id("submissions").addEventListener("click", () => {
-      window.location.href = "submissions.html";
-    });
-    id("resources").addEventListener("click", () => {
-      window.location.href = "resources.html";
-    });
   }
 
   /**

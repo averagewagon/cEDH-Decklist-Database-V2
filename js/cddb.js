@@ -7,7 +7,7 @@ The javascript for the databases in the cEDH Decklist Database.
   "use strict";
 
   const BASE_URL = "https://sheets.googleapis.com/v4/spreadsheets/1NYZ2g0ETfGulhPKYAKrKTPjviaLERKuvyKyk9oizV8Q/values/";
-  const PARAMS = "!A2:K?key=AIzaSyCy2pE5znDZ9uDdpSgYb2Q992r0YOIPuIw";
+  const PARAMS = "!A2:J?key=AIzaSyCy2pE5znDZ9uDdpSgYb2Q992r0YOIPuIw";
   const DECKBOX = "https://deckbox.org/mtg/";
   const PARTNERS = {"Akiri" : "Akiri, Line-Slinger","Bruse Tarl" : "Bruse Tarl, Boorish Herder","Gorm" : "Gorm the Great","Ikra Shidiqi" : "Ikra Shidiqi, the Usurper","Ishai" : "Ishai, Ojutai Dragonspeaker","Khorvath" : "Khorvath Brightflame","Kraum" : "Kraum, Ludevic's Opus","Krav" : "Krav, the Unredeemed","Kydele" : "Kydele, Chosen of Kruphix","Ludevic" : "Ludevic, Necro-Alchemist","Okaun" : "Okaun, Eye of Chaos","Pir" : "Pir, Imaginative Rascal","Ravos" : "Ravos, Soultender","Regna" : "Regna, the Redeemer","Reyhan" : "Reyhan, Last of the Abzan","Rowan" : "Rowan Kenrith","Sidar Kondo" : "Sidar Kondo of Jamuraa","Silas Renn" : "Silas Renn, Seeker Adept","Sylvia" : "Sylvia Brightspear","Tana" : "Tana, the Bloodsower","Thrasios" : "Thrasios, Triton Hero","Toothy" : "Toothy, Imaginary Friend","Tymna" : "Tymna the Weaver","Vial Smasher" : "Vial Smasher the Fierce","Virtus" : "Virtus the Veiled","Will" : "Will Kenrith","Zndrsplt" : "Zndrsplt, Eye of Wisdom"};
   const COLOR_ORDER = ["W", "U", "B", "R", "G", "WU", "UB", "BR", "RG", "WG", "WB", "UR", "BG", "RW", "UG", "WUB", "UBR", "BRG", "WRG", "WUG", "WBG", "WUR", "UBG", "WBR", "URG", "UBRG", "WBRG", "WURG", "WUBG", "WUBR", "WUBRG"];
@@ -53,11 +53,6 @@ The javascript for the databases in the cEDH Decklist Database.
       row.discord = entry[7].trim().split(", ");
       row.curators = entry[8].trim().split(", ");
       row.date = entry[9].trim().split(" ")[0];
-      if (entry[10].includes(",")) {
-        row.meta = "flexible";
-      } else {
-        row.meta = entry[10].split(" ")[0].toLowerCase();
-      }
       temp.push(row);
     }
     database = temp;
@@ -91,7 +86,6 @@ The javascript for the databases in the cEDH Decklist Database.
         let searched = (entry.commander.toLowerCase().includes(search)
             || entry.deckname.toLowerCase().includes(search)
             || entry.description.toLowerCase().includes(search)
-            || entry.meta.toLowerCase().includes(search)
             || entry.strategy.toLowerCase().includes(search));
 
         let hasPrimer = (entry.primer.includes("Y")) || !priObj;
@@ -125,9 +119,9 @@ The javascript for the databases in the cEDH Decklist Database.
     document.getElementById("entries").appendChild(entryRow);
 
     entryRow.appendChild(addColors(entry));
-    entryRow.appendChild(addMeta(entry));
-    entryRow.appendChild(addCommanders(entry));
     entryRow.appendChild(addDeckName(entry));
+    entryRow.appendChild(addCommanders(entry));
+
     entryRow.appendChild(addIcons(entry));
 
     let infoRow = document.createElement("tr");
@@ -135,7 +129,7 @@ The javascript for the databases in the cEDH Decklist Database.
     document.getElementById("entries").appendChild(infoRow);
 
     let td = document.createElement("td");
-    td.colSpan = "5";
+    td.colSpan = "4";
     infoRow.appendChild(td);
 
     let sub = document.createElement("div");
@@ -185,18 +179,6 @@ The javascript for the databases in the cEDH Decklist Database.
     }
     colors.appendChild(wrapper);
     return colors;
-  }
-
-  function addMeta(entry) {
-    let meta = document.createElement("td");
-    meta.classList = "meta " + entry.meta + "-meta";
-    let wrapper = document.createElement("div");
-    meta.appendChild(wrapper);
-    let img = document.createElement("img");
-    img.src = "img/" + entry.meta + ".png";
-    img.alt = entry.meta + " meta";
-    wrapper.appendChild(img);
-    return meta;
   }
 
   function addCommanders(entry) {
@@ -390,7 +372,7 @@ The javascript for the databases in the cEDH Decklist Database.
     let error = document.createElement("td");
     error.innerText = "Sorry, the request to our database failed with the error:\n"
                       + info;
-    error.colSpan = "5";
+    error.colSpan = "4";
     let row = document.createElement("tr");
     row.appendChild(error);
     id("entries").appendChild(row);

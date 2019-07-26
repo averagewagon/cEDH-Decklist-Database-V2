@@ -34,32 +34,46 @@
   <body>
     <div id="wrapper">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="collapse navbar-collapse" id="navbar">
-          <a class="navbar-brand" href="#" id="logo">
-            <img src="img/phy.png">
-            cEDH Decklist Database
-          </a>
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li id="primary" class="nav-item">
-              <a class="nav-link" href="#">Primary Database</a>
-            </li>
-            <li id="fringe" class="nav-item">
-              <a class="nav-link" href="#">Fringe Database</a>
-            </li>
-            <li id="submissions" class="nav-item">
-              <a class="nav-link" href="#">Submissions</a>
-            </li>
-            <li id="resources" class="nav-item">
-              <a class="nav-link" href="#">Resources</a>
-            </li>
-          </ul>
-          <span class="navbar-text">
-            <a href="https://discord.gg/BXPyu2P" target="_blank">
-              <span>Discord Server</span>
-              <img src="img/discord.png" alt="Discord Image">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbar">
+            <a class="navbar-brand" href="#" id="logo">
+              <img src="img/phy.png" alt="logo">
+              cEDH Decklist Database
             </a>
-        </div>
-      </nav>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+              <li id="primary" class="nav-item">
+                <a class="nav-link" href="primary.html">Primary</a>
+              </li>
+              <li id="fringe" class="nav-item">
+                <a class="nav-link" href="fringe.html">Fringe</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  More
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="outdated.html" id="outdated">Outdated</a>
+                  <a class="dropdown-item" href="memes.html" id="memes">Memes</a>
+                </div>
+              </li>
+              <li id="submissions" class="nav-item">
+                <a class="nav-link" href="submissions.html">Submissions</a>
+              </li>
+              <li id="resources" class="nav-item">
+                <a class="nav-link" href="resources.html">Resources</a>
+              </li>
+            </ul>
+            <span class="navbar-text">
+              <a href="https://discord.gg/BXPyu2P" target="_blank">
+                <span>Discord Server</span>
+                <img src="img/discord.png" alt="Discord Image">
+              </a>
+            </span>
+          </div>
+        </nav>
 
       <main>
         <article id="resources">
