@@ -14,12 +14,8 @@ The javascript for the navbar in the cEDH Decklist Database.
   function init() {
     if (window.location.href.indexOf("primary") > -1) {
       id("primary").classList.add("active");
-    } else if (window.location.href.indexOf("fringe") > -1) {
-      id("fringe").classList.add("active");
     } else if (window.location.href.indexOf("submissions") > -1) {
       id("submissions").classList.add("active");
-    } else if (window.location.href.indexOf("resources") > -1) {
-      id("resources").classList.add("active");
     } else if (window.location.href.indexOf("outdated") > -1) {
       id("outdated").classList.add("active");
     } else if (window.location.href.indexOf("memes") > -1) {
