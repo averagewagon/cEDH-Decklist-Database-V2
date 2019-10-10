@@ -8,7 +8,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Primary - cEDH Decklist Database</title>
+    <title>cEDH Decklist Database</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
@@ -32,6 +32,8 @@
     <script src="js/nav.js"></script>
     <script src="js/cddb.js"></script>
     <link rel="icon" type="image/ico" href="img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   </head>
 
   <body>
@@ -47,10 +49,10 @@
           </a>
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li id="primary" class="nav-item">
-              <a class="nav-link" href="primary.html">Primary</a>
+              <a class="nav-link" href="primary.html">Database</a>
             </li>
-            <li id="fringe" class="nav-item">
-              <a class="nav-link" href="fringe.html">Fringe</a>
+            <li id="submissions" class="nav-item">
+              <a class="nav-link" href="submissions.html">Submissions</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,12 +62,6 @@
                 <a class="dropdown-item" href="outdated.html" id="outdated">Outdated</a>
                 <a class="dropdown-item" href="memes.html" id="memes">Memes</a>
               </div>
-            </li>
-            <li id="submissions" class="nav-item">
-              <a class="nav-link" href="submissions.html">Submissions</a>
-            </li>
-            <li id="resources" class="nav-item">
-              <a class="nav-link" href="resources.html">Resources</a>
             </li>
           </ul>
           <span class="navbar-text">
@@ -79,20 +75,13 @@
 
       <main>
         <div id="dbinfo">
-          <h2>Primary</h2>
-          <h3>Reliable and trusted lists.</h3>
-          <p>
-            The Decklist Database is currently in its open beta. If there are any mistakes
-            in the database, or you would be interested in helping us write new descriptions
-            for old lists, please join our Discord server, linked in the top right.
-          </p>
           <div>
             <h4>Tags</h4>
             <p>
               <img class="strat tagDesc" src="img/proactive.png" alt="Proactive">
               decklists rarely prioritize disrupting opponents over finding wincons
               and/or playing value engines. They are not necessarily fast,
-              but they are unlikely to switch their focus to disrupting opponents.
+              but they are unlikely to switch focus to disruption.
             </p>
             <p>
               <img class="strat tagDesc" src="img/disruptive.png" alt="Disruptive">
@@ -109,7 +98,14 @@
           <div id="searchform">
             <div id="searches">
               <input class="form-control form-control-lg" type="text" placeholder="Search Database..." id="searchtext" autocomplete="off">
-              <input class="form-control form-control-lg" type="text" placeholder="Search Curators..." id="searchcurators" autocomplete="off">
+              <div id="searchwrap">
+                  <input class="form-control form-control-lg" type="text" placeholder="Search Curators..." id="searchcurators" autocomplete="off">
+                  <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                      <a class="nav-link" id="hasRec"> <img src="img/rec.png" class="recImage" alt="rec"> Recommended by DDB Managers</a>
+                    </li>
+                  </ul>
+              </div>
             </div>
             <div id="switches">
               <ul class="nav nav-pills flex-column">

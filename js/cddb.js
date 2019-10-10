@@ -10,7 +10,10 @@ The javascript for the databases in the cEDH Decklist Database.
   const PARAMS = "!A2:J?key=AIzaSyCy2pE5znDZ9uDdpSgYb2Q992r0YOIPuIw";
   const DECKBOX = "https://deckbox.org/mtg/";
   const PARTNERS = {"Akiri" : "Akiri, Line-Slinger","Bruse Tarl" : "Bruse Tarl, Boorish Herder","Gorm" : "Gorm the Great","Ikra Shidiqi" : "Ikra Shidiqi, the Usurper","Ishai" : "Ishai, Ojutai Dragonspeaker","Khorvath" : "Khorvath Brightflame","Kraum" : "Kraum, Ludevic's Opus","Krav" : "Krav, the Unredeemed","Kydele" : "Kydele, Chosen of Kruphix","Ludevic" : "Ludevic, Necro-Alchemist","Okaun" : "Okaun, Eye of Chaos","Pir" : "Pir, Imaginative Rascal","Ravos" : "Ravos, Soultender","Regna" : "Regna, the Redeemer","Reyhan" : "Reyhan, Last of the Abzan","Rowan" : "Rowan Kenrith","Sidar Kondo" : "Sidar Kondo of Jamuraa","Silas Renn" : "Silas Renn, Seeker Adept","Sylvia" : "Sylvia Brightspear","Tana" : "Tana, the Bloodsower","Thrasios" : "Thrasios, Triton Hero","Toothy" : "Toothy, Imaginary Friend","Tymna" : "Tymna the Weaver","Vial Smasher" : "Vial Smasher the Fierce","Virtus" : "Virtus the Veiled","Will" : "Will Kenrith","Zndrsplt" : "Zndrsplt, Eye of Wisdom"};
-  const COLOR_ORDER = ["W", "U", "B", "R", "G", "WU", "UB", "BR", "RG", "WG", "WB", "UR", "BG", "RW", "UG", "WUB", "UBR", "BRG", "WRG", "WUG", "WBG", "WUR", "UBG", "WBR", "URG", "UBRG", "WBRG", "WURG", "WUBG", "WUBR", "WUBRG"];
+  const COLOR_ORDER = ["W", "U", "B", "R", "G",
+  "WU", "UB", "BR", "RG", "WG", "WB", "UR", "BG", "RW", "UG",
+  "WUB", "UBR", "BRG", "WRG", "WUG", "WBG", "WUR", "UBG", "WBR", "URG",
+  "UBRG", "WBRG", "WURG", "WUBG", "WUBR", "WUBRG"];
 
   let database;
 
@@ -25,10 +28,21 @@ The javascript for the databases in the cEDH Decklist Database.
       .then(JSON.parse)
       .then(populateDatabase)
       .catch(printError);
+
+    if (qs(".active").id == "primary") {
+      let url = BASE_URL + "fringe" + PARAMS;
+
+      fetch(url)
+        .then(checkStatus)
+        .then(JSON.parse)
+        .then(populateDatabase)
+        .catch(printError);
+    }
   }
 
   /**
-   * Uses the response to populate the table
+   * Uses the response to populate the database array.
+   * The spaghetti is necessary in order to format the raw Google Sheets data
    * @param {object} response - The response from the API
    */
   function populateDatabase(response) {
@@ -37,6 +51,7 @@ The javascript for the databases in the cEDH Decklist Database.
 
     id("hasPrimer").addEventListener("click", toggle);
     id("hasDiscord").addEventListener("click", toggle);
+    id("hasRec").addEventListener("click", toggle);
 
     let temp = [];
     let narrowedResponse = response.values;
@@ -53,9 +68,14 @@ The javascript for the databases in the cEDH Decklist Database.
       row.discord = entry[7].trim().split(", ");
       row.curators = entry[8].trim().split(", ");
       row.date = entry[9].trim().split(" ")[0];
+      row.rec = response.range.includes("primary");
       temp.push(row);
     }
-    database = temp;
+    if (database) {
+      database = database.concat(temp);
+    } else {
+      database = temp;
+    }
     updateDatabase();
   }
 
@@ -77,6 +97,7 @@ The javascript for the databases in the cEDH Decklist Database.
     let cur = id("searchcurators").value.trim().toLowerCase();
     let priObj = id("hasPrimer").classList.contains("active");
     let discObj = id("hasDiscord").classList.contains("active");
+    let recObj = id("hasRec").classList.contains("active");
 
     for (let i in COLOR_ORDER) {
       let color = COLOR_ORDER[i];
@@ -90,6 +111,7 @@ The javascript for the databases in the cEDH Decklist Database.
 
         let hasPrimer = (entry.primer.includes("Y")) || !priObj;
         let hasDiscord = (entry.discord != "NA") || !discObj;
+        let hasRec = entry.rec || !recObj
 
         let matches = false;
         for (let i in entry.curators) {
@@ -100,7 +122,7 @@ The javascript for the databases in the cEDH Decklist Database.
 
         let sorted = (color == entry.colors);
 
-        if (hasPrimer && hasDiscord && searched && matches && sorted) {
+        if (hasRec && hasPrimer && hasDiscord && searched && matches && sorted) {
           addRow(entry, i);
         }
       }
@@ -230,6 +252,17 @@ The javascript for the databases in the cEDH Decklist Database.
   function addIcons(entry) {
     let icons = document.createElement("td");
     icons.classList = "icons";
+
+    let rec = document.createElement("img");
+    rec.src = "img/rec.png";
+    rec.classList = "recImage";
+    if (entry.rec) {
+      rec.alt = "Curator Recommended";
+    } else {
+      rec.classList.add("darkened");
+      rec.alt = "Not Curator Recommended";
+    }
+    icons.appendChild(rec);
 
     let primer = document.createElement("img");
     primer.src = "img/primer.png";

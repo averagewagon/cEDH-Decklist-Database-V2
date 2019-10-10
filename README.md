@@ -17,11 +17,9 @@ Completed Features:
 - Deck admission guidelines
 - Descriptions above databases
 
-Planned Features:
-- Resources tab, with links to cEDH resources
-
 Potential Additions:
 - Decklist "recently updated" feature, scraping lists that have been updated in the past 3 months
 - Different website icon
 - Change font
 - Filter to colors w/ selectable color bars
+

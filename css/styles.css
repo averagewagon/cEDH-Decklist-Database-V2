@@ -20,7 +20,7 @@
 
 /* Body/Nav Styles */
 body {
-  width: 75%;
+  width: 72%;
   margin: 0 auto;
 }
 
@@ -64,7 +64,37 @@ nav {
   width: 22%;
 }
 
+.dropdown {
+  width: 80px;
+}
+
 /* Database Styles */
+main {
+  width: 100%;
+}
+
+@media (max-width: 990px) {
+  body {
+    margin-left: 0;
+  }
+  nav {
+    margin-left: 40%;
+    padding-left: 200px !important;
+    padding-right: 200px !important;
+  }
+  #dbinfo {
+    margin-left: 4%;
+    min-width: 900px;
+  }
+  #database {
+    margin-left: 2%;
+  }
+  #subm {
+    margin-left: 13%;
+    min-width: 800px;
+  }
+}
+
 #dbinfo {
   margin-top: 20px;
 }
@@ -88,6 +118,17 @@ nav {
   width: 70%;
 }
 
+#searchwrap {
+  display: flex;
+}
+#searchwrap input {
+  width: 55%;
+}
+#searchwrap ul {
+  width: 45%;
+  cursor: pointer;
+}
+
 #searchtext {
   margin-bottom: 12px;
 }
@@ -109,7 +150,7 @@ nav {
   overflow: hidden;
 }
 
-#hasDiscord, #hasPrimer {
+#hasDiscord, #hasPrimer, #hasRec {
   font-size: 16pt;
 }
 
@@ -127,13 +168,6 @@ nav {
   font-family: 'IBM Plex Mono', monospace;
   margin-bottom: 350px;
   min-width: 940px;
-}
-
-#database thead button {
-  width: 100%;
-  text-align: left !important;
-  font-weight: bold !important;
-  font-size: 14pt;
 }
 
 tr th {
@@ -154,6 +188,7 @@ tr th {
   color: white;
   font-size: 15pt;
   font-weight: bold;
+  width: 100%;
 }
 
 .entry td div {
@@ -165,8 +200,8 @@ tr th {
 }
 
 .icons {
-  width: 230px;
-  min-width: 230px;
+  width: 260px;
+  min-width: 260px;
 }
 
 .entry:hover {
@@ -188,6 +223,12 @@ tr th {
 
 .colors img {
   height: 30px;
+}
+
+.recImage {
+  height: 30px;
+  margin-right: 10px;
+  margin-bottom: 8px;
 }
 
 .primerImage {
