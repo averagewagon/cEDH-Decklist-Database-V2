@@ -18,6 +18,7 @@ The javascript for the databases in the cEDH Decklist Database.
   let database;
 
   window.addEventListener("load", loadDatabase);
+  window.addEventListener("load", loadMotd);
 
   /** Gets the table from the API in order to display it on the webpage. */
   function loadDatabase() {
@@ -38,6 +39,20 @@ The javascript for the databases in the cEDH Decklist Database.
         .then(populateDatabase)
         .catch(printError);
     }
+  }
+
+  function loadMotd() {
+    let url = BASE_URL + "motd" + "!A1:A1?key=AIzaSyCy2pE5znDZ9uDdpSgYb2Q992r0YOIPuIw"
+
+    fetch(url)
+      .then(checkStatus)
+      .then(JSON.parse)
+      .then(setMotd)
+      .catch(printError);
+  }
+
+  function setMotd(response) {
+    id("motd").innerText = response.values;
   }
 
   /**
