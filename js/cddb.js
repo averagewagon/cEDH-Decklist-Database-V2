@@ -48,7 +48,7 @@ The javascript for the databases in the cEDH Decklist Database.
       .then(checkStatus)
       .then(JSON.parse)
       .then(setMotd)
-      .catch(printError);
+      .catch(console.log);
   }
 
   function setMotd(response) {
