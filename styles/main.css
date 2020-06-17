@@ -25,6 +25,11 @@ a {
   height: 24px;
 }
 
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
 /*
   Nav Styles
 */
@@ -118,4 +123,26 @@ header {
   color: black;
 }
 
-/* Main Styles */
+/*
+  Main Styles
+*/
+main {
+  margin: 16px;
+}
+
+/*
+  Aside Styles
+*/
+aside {
+  width: 25%;
+  position: fixed;
+}
+
+
+/*
+  Section Styles
+*/
+section {
+  width: 75%;
+  margin-left: 25%;
+}
