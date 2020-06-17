@@ -1,6 +1,18 @@
 # cEDH-Decklist-Database
-A collection of Competitive EDH decklists.
-Hosted at: https://averagedragon.github.io/cEDH-Decklist-Database/
+A collection of Competitive EDH decklists.  
+Hosted at: https://cedh-decklist-database.xyz
+
+2020 Redesign to-do list:
+- Color Filters
+- Changing from Google Sheets to Firebase hosting
+- Visual overhaul
+- Performance improvements
+- Google Analytics
+- Website Feedback Form
+- Additional tools for curator editing
+  - Automatic date added feature
+  - Edit database using a form and IDs
+- Switch domain to https://cedh-decklist-database.com
 
 Completed Features:
 - Dark theme
@@ -16,10 +28,3 @@ Completed Features:
 - Author search
 - Deck admission guidelines
 - Descriptions above databases
-
-Potential Additions:
-- Decklist "recently updated" feature, scraping lists that have been updated in the past 3 months
-- Different website icon
-- Change font
-- Filter to colors w/ selectable color bars
-
