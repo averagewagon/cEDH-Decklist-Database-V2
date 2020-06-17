@@ -11,8 +11,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/ico" href="img/favicon.ico">
-    <link rel="stylesheet" type="text/css" media="screen and (min-width: 601px)" href="./styles/main.css" />
-    <link rel="stylesheet" type="text/css" media="screen and (max-width: 600px)" href="./styles/small.css" />
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 1280px)" href="./styles/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 1279px)" href="./styles/small.css" />
 
     <!-- Google AdSense -->
     <!--
@@ -24,7 +24,7 @@
     <div id="wrapper">
       <div id="fixed-elems">
       <nav class="ns">
-        <a id="logo" href="index.html"><img src="./img/phy.png"/><span>Competitive EDH<br/> Decklist Database</span></a>
+        <a id="logo" href="index.html"><img src="./img/phy.png" alt="Competitive EDH Decklist Database"/><span>Competitive EDH<br/> Decklist Database</span></a>
         <div id="nav-buttons">
           <a class="btn" id="main-link">Mystery Button</a>
           <a class="btn" id="discord-link" target="_blank" href="https://discord.gg/BXPyu2P">Discord Server</a>
@@ -55,30 +55,34 @@
           <!-- Aside, locked in position -->
           <h2>Filters</h2>
           <div id="color-filters">
-            <span>Color Filter Placeholder</span>
+            <img class="icon color-inactive" src="./img/mana/w.png" alt="white"/>
+            <img class="icon color-active" src="./img/mana/u.png" alt="blue"/>
+            <img class="icon color-inactive" src="./img/mana/b.png" alt="black"/>
+            <img class="icon color-inactive" src="./img/mana/r.png" alt="red"/>
+            <img class="icon color-active" src="./img/mana/g.png" alt="green"/>
           </div>
           <ul class="ns">
-            <li class="filter-option unselected">
+            <li class="filter-option filter-active">
               <img class="icon" src="./img/rec.png"/>
-              <span>Our Endorsements</span>
+              <span>Our Recommendations</span>
             </li>
-            <li class="filter-option unselected">
+            <li class="filter-option filter-inactive">
               <img class="icon" src="./img/primer.png"/>
               <span>Primers</span>
             </li>
-            <li class="filter-option unselected">
+            <li class="filter-option filter-inactive">
               <img class="icon" src="./img/discord.png"/>
               <span>Discord Servers</span>
             </li>
           </ul>
-          <div id="advertisement"></div>
+          <div id="advertisement">Advertisement</div>
         </aside>
 
         <section id="section">
           <!-- Database Container -->
           <div id="flex-title">
             <h1>Competitive Decklists</h1>
-            <a href="" id="submission-link">Submit a Decklist</a>
+            <a href="" class="btn" id="submission-link">Submit a Decklist</a>
           </div>
 
           <div id="db-select">

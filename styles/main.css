@@ -1,12 +1,39 @@
 /*
+  Colors
+*/
+/* arc dark */
+/*
+:root {
+  --backdrop-color: #383c4a;
+  --canvas-color: #404552;
+  --secondary-color: #4b5162;
+  --accent-color: #8ebbd1;
+}
+*/
+
+/* My Gray */
+:root {
+  --backdrop-color: #383c4a;
+  --canvas-color: #404552;
+  --secondary-color: #4b5162;
+  --accent-color: #8ebbd1;
+}
+
+/*
   Global Styles
 */
+
 body {
   width: 95%;
   max-width: 1500px;
   margin: 0 auto;
-  border: 1px solid black;
   font-family: sans-serif;
+  background-color: var(--backdrop-color);
+  color: white;
+}
+
+#wrapper {
+  background-color: var(--canvas-color);
 }
 
 #fixed-elems, aside {
@@ -14,7 +41,7 @@ body {
   width: 95%;
   max-width: 1500px;
   z-index: 2;
-  background-color: white;
+  background-color: var(--secondary-color);
 }
 
 a {
@@ -24,7 +51,6 @@ a {
 
 .btn {
   border: 1px solid black;
-  padding: 12px;
   border-radius: 4px;
   text-align: center;
   cursor: pointer;
@@ -53,11 +79,12 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  margin-left: 16px;
-  margin-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
   font-size: 14pt;
+  border-bottom: 3px solid var(--backdrop-color);
 }
 
 #logo {
@@ -92,6 +119,7 @@ nav {
   width: 50%;
   min-width: 210px;
   margin-right: 16px;
+  padding: 12px;
 }
 
 #search {
@@ -121,11 +149,11 @@ nav {
 */
 header {
   padding: 16px;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: var(--accent-color);
+  color: black;
 }
 
 #motd {
@@ -139,7 +167,7 @@ header {
   margin-right: 8px;
   font-size: 32pt;
   line-height: 16px;
-  color: gray;
+  color: black;
 }
 
 #motd-close:hover {
@@ -158,22 +186,48 @@ main {
 */
 aside {
   width: 250px;
-  margin-left: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
   padding-top: 176px;
   z-index: 0;
+  height: 100%;
+}
+
+h2 {
+  font-size: 20pt;
 }
 
 aside li {
   padding: 8px;
-  border: 1px solid black;
+  border-top: 1px solid lightgray;
   display: flex;
   align-items: center;
   height: 30px;
   cursor: pointer;
 }
 
+aside li:last-child {
+  border-bottom: 1px solid lightgray;
+}
+
 aside li span {
   margin-left: 16px;
+}
+
+#color-filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.color-inactive, .color-active {
+  cursor: pointer;
+}
+
+.color-inactive {
+  opacity: 0.3;
 }
 
 #advertisement {
@@ -182,17 +236,35 @@ aside li span {
   background-color: darkgray;
   margin-top: 16px;
   margin-bottom: 32px;
-}
-
-#feedback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /*
   Section Styles
 */
 section {
-  width: 75%;
+  max-width: 1154px;
   padding-top: 176px;
-  margin-left: 25%;
+  margin-left: 282px;
+  padding-left: 32px;
+  padding-right: 32px;
   z-index: 4;
+}
+
+#flex-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+h1 {
+  font-size: 24pt;
+  margin-top: 0px;
+}
+
+#submission-link {
+  padding: 16px;
 }
