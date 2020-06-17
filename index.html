@@ -13,6 +13,11 @@
     <link rel="icon" type="image/ico" href="img/favicon.ico">
     <link rel="stylesheet" type="text/css" media="screen and (min-width: 601px)" href="./styles/main.css" />
     <link rel="stylesheet" type="text/css" media="screen and (max-width: 600px)" href="./styles/small.css" />
+
+    <!-- Google AdSense -->
+    <!--
+    <script data-ad-client="ca-pub-4373090976253918" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    -->
   </head>
 
   <body>
@@ -22,7 +27,7 @@
         <a id="logo" href="index.html"><img src="./img/phy.png"/><span>Competitive EDH<br/> Decklist Database</span></a>
         <div id="nav-buttons">
           <a class="btn" id="main-link">Mystery Button</a>
-          <a class="btn" id="discord-link" href="https://discord.gg/BXPyu2P">Discord Server</a>
+          <a class="btn" id="discord-link" target="_blank" href="https://discord.gg/BXPyu2P">Discord Server</a>
         </div>
         <div id="search">
           <input id="search-box" type="search" placeholder="Search the database..." name="search" aria-label="search">
@@ -49,26 +54,24 @@
         <aside id="aside">
           <!-- Aside, locked in position -->
           <h2>Filters</h2>
-          <ul>
-            <li class="color-filters">
-              Color Filter Placeholder
-            </li>
+          <div id="color-filters">
+            <span>Color Filter Placeholder</span>
+          </div>
+          <ul class="ns">
             <li class="filter-option unselected">
               <img class="icon" src="./img/rec.png"/>
-              Our Recommendations
+              <span>Our Endorsements</span>
             </li>
             <li class="filter-option unselected">
               <img class="icon" src="./img/primer.png"/>
-              Primers
+              <span>Primers</span>
             </li>
             <li class="filter-option unselected">
               <img class="icon" src="./img/discord.png"/>
-              Discord Servers
+              <span>Discord Servers</span>
             </li>
           </ul>
-          <div id="advertisement">
-          </div>
-          <a href="" class="btn">Feedback Form</a>
+          <div id="advertisement"></div>
         </aside>
 
         <section id="section">

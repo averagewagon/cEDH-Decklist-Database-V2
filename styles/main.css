@@ -31,7 +31,7 @@ a {
 }
 
 .icon {
-  height: 24px;
+  width: 36px;
 }
 
 ul {
@@ -157,12 +157,35 @@ main {
   Aside Styles
 */
 aside {
-  width: 16%;
+  width: 250px;
   margin-left: 16px;
   padding-top: 176px;
   z-index: 0;
 }
 
+aside li {
+  padding: 8px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  cursor: pointer;
+}
+
+aside li span {
+  margin-left: 16px;
+}
+
+#advertisement {
+  width: 250px;
+  height: 250px;
+  background-color: darkgray;
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+
+#feedback {
+}
 
 /*
   Section Styles
