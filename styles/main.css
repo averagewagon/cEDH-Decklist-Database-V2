@@ -193,12 +193,14 @@ aside {
   height: 100%;
 }
 
-h2 {
+h3 {
   font-size: 20pt;
+  margin-top: 18px;
+  margin-bottom: 16px;
 }
 
 aside li {
-  padding: 8px;
+  padding: 16px;
   border-top: 1px solid lightgray;
   display: flex;
   align-items: center;
@@ -218,8 +220,8 @@ aside li span {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 8px;
-  padding-right: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .color-inactive, .color-active {
@@ -258,11 +260,13 @@ section {
   align-items: center;
   justify-content: space-between;
   margin-top: 16px;
+  margin-bottom: 16px;
 }
 
-h1 {
+h2 {
   font-size: 24pt;
   margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 #submission-link {
