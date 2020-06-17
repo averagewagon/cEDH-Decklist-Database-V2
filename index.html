@@ -11,94 +11,106 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/ico" href="img/favicon.ico">
-    <link rel="stylesheet" media="screen and (min-width: 601px)" href="./styles/main.css" />
-    <link rel="stylesheet" media="screen and (max-width: 600px)" href="./styles/small.css" />
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 601px)" href="./styles/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 600px)" href="./styles/small.css" />
   </head>
 
   <body>
-    <div>
+    <div id="wrapper">
       <nav>
-        <a id="logo" href="index.html"><img src="./img/phy.png"/> cEDH Decklist Database</a>
-        <a class="nav-button btn" id="main-link">Competitive Decklists</a>
-        <a class="nav-button btn" id="discord-link">Discord Server</a>
-        <form id="search-form">
-          <input id="search" type="search" placeholder="Search the database..." name="search" aria-label="search">
-          <button id="search-btn">Search</button>
-        </form>
+        <a id="logo" href="index.html"><img src="./img/phy.png"/><span>Competitive EDH<br/> Decklist Database</span></a>
+        <div id="nav-buttons">
+          <a class="btn" id="main-link">Competitive Decklists</a>
+          <a class="btn" id="discord-link">Discord Server</a>
+        </div>
+        <div id="search">
+          <input id="search-box" type="search" placeholder="Search the database..." name="search" aria-label="search">
+          <a class="btn" id="search-btn">Search</a>
+        </div>
       </nav>
 
-      <header><p id="motd"></p></header>
-
-      <aside>
-        <!-- Aside, locked in position -->
-        <h2>Filters</h2>
-        <ul>
-          <li class="color-filters">
-            Color Filter Placeholder
-          </li>
-          <li class="filter-option unselected">
-            <img class="icon" src="./img/rec.png"/>
-            Our Recommendations
-          </li>
-          <li class="filter-option unselected">
-            <img class="icon" src="./img/primer.png"/>
-            Primers
-          </li>
-          <li class="filter-option unselected">
-            <img class="icon" src="./img/discord.png"/>
-            Discord Servers
-          </li>
-        </ul>
-        <div id="advertisement">
-        </div>
-        <a href="" class="btn">Feedback Form</a>
-      </aside>
+      <header>
+        <span id="motd">
+          This is the message of the day,
+          displayed on a colored bar underneath the navigation element.
+          It will automatically adapt to multiple lines of content,
+          allowing the DDB curators to include messages on the main page
+          without interupting the visual style of the website.
+        </span>
+        <span id="motd-close" onclick="this.parentElement.style.display='none'">&times;</span>
+      </header>
 
       <main>
-        <!-- Database Container -->
-        <div id="flex-title">
-          <h1>Competitive Decklists</h1>
-          <a href="" id="submission-link">Submit a Decklist</a>
-        </div>
+        <aside>
+          <!-- Aside, locked in position -->
+          <h2>Filters</h2>
+          <ul>
+            <li class="color-filters">
+              Color Filter Placeholder
+            </li>
+            <li class="filter-option unselected">
+              <img class="icon" src="./img/rec.png"/>
+              Our Recommendations
+            </li>
+            <li class="filter-option unselected">
+              <img class="icon" src="./img/primer.png"/>
+              Primers
+            </li>
+            <li class="filter-option unselected">
+              <img class="icon" src="./img/discord.png"/>
+              Discord Servers
+            </li>
+          </ul>
+          <div id="advertisement">
+          </div>
+          <a href="" class="btn">Feedback Form</a>
+        </aside>
 
-        <div id="db-select">
-          <button id="main-db">Main Lists</button>
-          <button id="deprecated-db">Deprecated Lists</button>
-          <button id="meme-db">Meme Lists</button>
-        </div>
+        <section>
+          <!-- Database Container -->
+          <div id="flex-title">
+            <h1>Competitive Decklists</h1>
+            <a href="" id="submission-link">Submit a Decklist</a>
+          </div>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Placeholder</th>
-              <th>Placeholder</th>
-              <th>Placeholder</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Placeholder</td>
-              <td>Placeholder</td>
-              <td>Placeholder</td>
-            </tr>
-            <tr>
-              <td>Placeholder</td>
-              <td>Placeholder</td>
-              <td>Placeholder</td>
-            </tr>
-            <tr>
-              <td>Placeholder</td>
-              <td>Placeholder</td>
-              <td>Placeholder</td>
-            </tr>
-            <tr>
-              <td>Placeholder</td>
-              <td>Placeholder</td>
-              <td>Placeholder</td>
-            </tr>
-          </tbody>
-        </table>
+          <div id="db-select">
+            <button id="main-db">Main Lists</button>
+            <button id="deprecated-db">Deprecated Lists</button>
+            <button id="meme-db">Meme Lists</button>
+          </div>
 
+          <table>
+            <thead>
+              <tr>
+                <th>Placeholder</th>
+                <th>Placeholder</th>
+                <th>Placeholder</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Placeholder</td>
+                <td>Placeholder</td>
+                <td>Placeholder</td>
+              </tr>
+              <tr>
+                <td>Placeholder</td>
+                <td>Placeholder</td>
+                <td>Placeholder</td>
+              </tr>
+              <tr>
+                <td>Placeholder</td>
+                <td>Placeholder</td>
+                <td>Placeholder</td>
+              </tr>
+              <tr>
+                <td>Placeholder</td>
+                <td>Placeholder</td>
+                <td>Placeholder</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
       </main>
     </div>
   </body>

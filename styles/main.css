@@ -1,0 +1,121 @@
+/*
+  Global Styles
+*/
+body {
+  width: 95%;
+  max-width: 1500px;
+  margin: 0 auto;
+  border: 1px solid black;
+  font-family: sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.btn {
+  border: 1px solid black;
+  padding: 12px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.icon {
+  height: 24px;
+}
+
+/*
+  Nav Styles
+*/
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16px;
+  font-size: 14pt;
+}
+
+#logo {
+  display: flex;
+  align-items: stretch;
+  font-size: 20pt;
+  font-weight: bold;
+  padding: 8px;
+  width: 25%;
+  min-width: 330px;
+}
+
+#logo img {
+  height: 80px;
+}
+
+#logo span {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 8px;
+}
+
+#nav-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-left: 16px;
+}
+
+#nav-buttons a {
+  width: 50%;
+  min-width: 210px;
+  margin-right: 16px;
+}
+
+#search {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+}
+
+#search input {
+  width: 80%;
+  margin-right: 16px;
+  border: 2px solid lightgray;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 12pt;
+}
+
+#search a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+}
+
+/*
+  MotD Styles
+*/
+header {
+  padding: 16px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#motd-close {
+  cursor: pointer;
+  transition: 0.3s;
+  margin-left: 16px;
+  margin-right: 8px;
+  font-size: 32pt;
+  line-height: 16px;
+  color: gray;
+}
+
+#motd-close:hover {
+  color: black;
+}
+
+/* Main Styles */
