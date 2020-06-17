@@ -17,11 +17,12 @@
 
   <body>
     <div id="wrapper">
-      <nav>
+      <div id="fixed-elems">
+      <nav class="ns">
         <a id="logo" href="index.html"><img src="./img/phy.png"/><span>Competitive EDH<br/> Decklist Database</span></a>
         <div id="nav-buttons">
           <a class="btn" id="main-link">Mystery Button</a>
-          <a class="btn" id="discord-link">Discord Server</a>
+          <a class="btn" id="discord-link" href="https://discord.gg/BXPyu2P">Discord Server</a>
         </div>
         <div id="search">
           <input id="search-box" type="search" placeholder="Search the database..." name="search" aria-label="search">
@@ -33,15 +34,19 @@
         <span id="motd">
           This is the message of the day,
           displayed on a colored bar underneath the navigation element.
-          It will automatically adapt to multiple lines of content,
-          allowing the DDB curators to include messages on the main page
-          without interupting the visual style of the website.
+          It looks best with one or two lines of content. This can be adjusted
+          later to improve the visuals.
         </span>
-        <span id="motd-close" onclick="this.parentElement.style.display='none'">&times;</span>
+        <span id="motd-close" onclick="
+          this.parentElement.style.display='none';
+          document.getElementById('section').style.paddingTop = '110px';
+          document.getElementById('aside').style.paddingTop = '110px';
+        ">&times;</span>
       </header>
+      </div>
 
-      <main>
-        <aside>
+
+        <aside id="aside">
           <!-- Aside, locked in position -->
           <h2>Filters</h2>
           <ul>
@@ -66,7 +71,7 @@
           <a href="" class="btn">Feedback Form</a>
         </aside>
 
-        <section>
+        <section id="section">
           <!-- Database Container -->
           <div id="flex-title">
             <h1>Competitive Decklists</h1>
@@ -117,7 +122,6 @@
           </table>
           <p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p><p>e</p>
         </section>
-      </main>
     </div>
   </body>
 </html>
