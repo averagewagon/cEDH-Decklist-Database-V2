@@ -95,8 +95,9 @@ nav {
 }
 
 nav h1 {
-  font-size: 16pt;
+  font-size: 18pt;
   padding-left: 16px;
+  font-family: 'Patua One', sans-serif;
 }
 
 #logo img {
