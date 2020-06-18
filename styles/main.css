@@ -17,6 +17,7 @@
   --canvas-color: #404552;
   --secondary-color: #4b5162;
   --accent-color: #8ebbd1;
+  --top: 180px;
 }
 
 /*
@@ -25,7 +26,7 @@
 
 body {
   width: 95%;
-  max-width: 1500px;
+  max-width: 1600px;
   margin: 0 auto;
   font-family: sans-serif;
   background-color: var(--backdrop-color);
@@ -39,7 +40,7 @@ body {
 #fixed-elems, aside {
   position: fixed;
   width: 95%;
-  max-width: 1500px;
+  max-width: 1600px;
   z-index: 2;
   background-color: var(--secondary-color);
 }
@@ -50,10 +51,10 @@ a {
 }
 
 .btn {
-  border: 1px solid black;
-  border-radius: 4px;
+  border-radius: 6px;
   text-align: center;
   cursor: pointer;
+  background-color: var(--backdrop-color);
 }
 
 .icon {
@@ -79,8 +80,6 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 8px;
-  padding-bottom: 8px;
   padding-left: 16px;
   padding-right: 16px;
   font-size: 14pt;
@@ -89,16 +88,19 @@ nav {
 
 #logo {
   display: flex;
-  align-items: stretch;
-  font-size: 20pt;
-  font-weight: bold;
+  align-items: center;
   padding: 8px;
-  width: 25%;
-  min-width: 330px;
+  width: 20%;
+  min-width: 300px;
+}
+
+nav h1 {
+  font-size: 16pt;
+  padding-left: 16px;
 }
 
 #logo img {
-  height: 80px;
+  height: 60px;
 }
 
 #logo span {
@@ -112,11 +114,14 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+}
+
+#nav-buttons a:last-child {
   margin-left: 16px;
 }
 
 #nav-buttons a {
-  width: 50%;
+  width: 60%;
   min-width: 210px;
   margin-right: 16px;
   padding: 12px;
@@ -157,7 +162,7 @@ header {
 }
 
 #motd {
-  line-height: 22px;
+  line-height: 1.5;
 }
 
 #motd-close {
@@ -188,14 +193,14 @@ aside {
   width: 250px;
   padding-left: 16px;
   padding-right: 16px;
-  padding-top: 176px;
+  padding-top: var(--top);
   z-index: 0;
   height: 100%;
 }
 
-h3 {
+aside h2 {
   font-size: 20pt;
-  margin-top: 18px;
+  margin-top: 26px;
   margin-bottom: 16px;
 }
 
@@ -247,8 +252,8 @@ aside li span {
   Section Styles
 */
 section {
-  max-width: 1154px;
-  padding-top: 176px;
+  max-width: 1254px;
+  padding-top: var(--top);
   margin-left: 282px;
   padding-left: 32px;
   padding-right: 32px;
@@ -263,12 +268,50 @@ section {
   margin-bottom: 16px;
 }
 
-h2 {
+#db-select {
   font-size: 24pt;
   margin-top: 0px;
   margin-bottom: 0px;
+  background-color: var(--backdrop-color);
+  color: white;
+  padding: 8px;
+  border: 0;
+  border-radius: 8px;
+  width: 350px;
 }
 
-#submission-link {
-  padding: 16px;
+#submit-wrap {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#submit-wrap a {
+  font-size: 20pt;
+  padding: 12px;
+  margin-left: 16px;
+  width: 300px;
+}
+
+#description {
+  margin-top: 32px;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+/*
+  Database Styles
+*/
+#ddb {
+  width: 100%;
+  font-size: 16pt;
+}
+
+#ddb td {
+  padding: 8px;
+}
+
+td, th {
+  border-bottom: 1px solid white;
 }
