@@ -73,6 +73,10 @@ ul {
   user-select: none !important; /* Standard */
 }
 
+.mobile {
+  display: none;
+}
+
 /*
   Nav Styles
 */
@@ -180,13 +184,6 @@ header {
 
 #motd-close:hover {
   color: red;
-}
-
-/*
-  Main Styles
-*/
-main {
-  margin: 16px;
 }
 
 /*
