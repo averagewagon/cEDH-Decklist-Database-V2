@@ -25,7 +25,7 @@
 */
 
 body {
-  width: 95%;
+  width: 100%;
   max-width: 1600px;
   margin: 0 auto;
   font-family: sans-serif;
@@ -39,7 +39,7 @@ body {
 
 #fixed-elems, aside {
   position: fixed;
-  width: 95%;
+  width: 100%;
   max-width: 1600px;
   z-index: 2;
   background-color: var(--secondary-color);
