@@ -139,7 +139,9 @@ nav h1 {
   border: 2px solid lightgray;
   border-radius: 4px;
   padding: 12px;
-  font-size: 12pt;
+  font-size: 14pt;
+  color: black;
+  background-color: lightgray;
 }
 
 #search a {
