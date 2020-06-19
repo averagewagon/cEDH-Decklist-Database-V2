@@ -206,7 +206,7 @@ aside h2 {
 
 aside li {
   padding: 16px;
-  border-top: 1px solid lightgray;
+  border-top: 1px solid darkgray;
   display: flex;
   align-items: center;
   height: 30px;
@@ -214,7 +214,7 @@ aside li {
 }
 
 aside li:last-child {
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid darkgray;
 }
 
 aside li span {
@@ -237,6 +237,10 @@ aside li span {
   opacity: 0.3;
 }
 
+.color-inactive:hover {
+  opacity: 0.6;
+}
+
 #advertisement {
   width: 250px;
   height: 250px;
@@ -246,6 +250,14 @@ aside li span {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.filter-active {
+  background-color: var(--backdrop-color);
+}
+
+.filter-inactive:hover {
+  background-color: var(--canvas-color);
 }
 
 /*
@@ -269,7 +281,7 @@ section {
 }
 
 #db-select {
-  font-size: 24pt;
+  font-size: 20pt;
   margin-top: 0px;
   margin-bottom: 0px;
   background-color: var(--backdrop-color);
@@ -306,6 +318,7 @@ section {
 #ddb {
   width: 100%;
   font-size: 16pt;
+  padding-bottom: 104px;
 }
 
 #ddb td {
