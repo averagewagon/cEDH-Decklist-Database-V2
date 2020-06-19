@@ -17,7 +17,7 @@
   --canvas-color: #404552;
   --secondary-color: #4b5162;
   --accent-color: #8ebbd1;
-  --top: 180px;
+  --darker: #323643;
 }
 
 /*
@@ -138,6 +138,10 @@ nav h1 {
   background-color: var(--backdrop-color);
 }
 
+#search a:hover {
+  background-color: var(--darker);
+}
+
 #m-dropdown {
   text-align: center;
   border-radius: 2px;
@@ -146,6 +150,10 @@ nav h1 {
   color: white;
   padding: 8px;
   cursor: pointer;
+}
+
+#m-dropdown:hover {
+  background-color: var(--darker);
 }
 
 /*
@@ -266,13 +274,17 @@ aside li span {
   padding: 8px;
   text-align: center;
   border: 0;
-  border-radius: 4px;
+  border-radius: 2px;
   padding-left: 28px;
   display: flex;
   align-items: stretch;
   justify-content: stretch;
   width: 100%;
   max-width: 350px;
+}
+
+#db-select:hover {
+  background-color: var(--darker);
 }
 
 #submit-wrap {
@@ -285,6 +297,10 @@ aside li span {
   margin: 8px auto;
   max-width: 350px;
   width: 100%;
+}
+
+#submit-wrap:hover {
+  background-color: var(--darker);
 }
 
 #submit-wrap a {

@@ -17,6 +17,7 @@
   --canvas-color: #404552;
   --secondary-color: #4b5162;
   --accent-color: #8ebbd1;
+  --darker: #323643;
   --top: 140px;
 }
 
@@ -57,6 +58,10 @@ a {
   background-color: var(--backdrop-color);
 }
 
+.btn:hover {
+  background-color: var(--darker);
+}
+
 .icon {
   width: 36px;
 }
@@ -95,6 +100,7 @@ nav {
   align-items: center;
   width: 12%;
   min-width: 250px;
+  margin-right: 36px;
 }
 
 nav h1 {
@@ -283,6 +289,10 @@ section {
   border: 0;
   border-radius: 4px;
   width: 350px;
+}
+
+#db-select:hover {
+  background-color: var(--darker);
 }
 
 #submit-wrap {
