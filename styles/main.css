@@ -17,7 +17,7 @@
   --canvas-color: #404552;
   --secondary-color: #4b5162;
   --accent-color: #8ebbd1;
-  --top: 180px;
+  --top: 140px;
 }
 
 /*
@@ -93,13 +93,12 @@ nav {
 #logo {
   display: flex;
   align-items: center;
-  padding: 8px;
-  width: 20%;
-  min-width: 300px;
+  width: 12%;
+  min-width: 250px;
 }
 
 nav h1 {
-  font-size: 18pt;
+  font-size: 16pt;
   padding-left: 16px;
   font-weight: normal;
   font-family: 'Patua One', sans-serif;
@@ -116,18 +115,12 @@ nav h1 {
   margin: 8px;
 }
 
-#nav-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-#nav-buttons a:last-child {
+#main-link {
   margin-left: 16px;
 }
 
-#nav-buttons a {
-  width: 60%;
+.nav-buttons {
+  width: 20%;
   min-width: 210px;
   margin-right: 16px;
   padding: 12px;
@@ -144,7 +137,7 @@ nav h1 {
   margin-right: 16px;
   border-radius: 2px;
   padding: 10px;
-  font-size: 14pt;
+  font-size: 12pt;
   color: black;
   background-color: lightgray;
 }
@@ -160,7 +153,7 @@ nav h1 {
   MotD Styles
 */
 header {
-  padding: 16px;
+  padding: 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -199,7 +192,7 @@ aside {
 }
 
 aside h2 {
-  font-size: 20pt;
+  font-size: 16pt;
   margin-top: 26px;
   margin-bottom: 16px;
 }
@@ -281,12 +274,12 @@ section {
 }
 
 #db-select {
-  font-size: 20pt;
+  font-size: 16pt;
   margin-top: 0px;
   margin-bottom: 0px;
   background-color: var(--backdrop-color);
   color: white;
-  padding: 8px;
+  padding: 12px;
   border: 0;
   border-radius: 4px;
   width: 350px;
@@ -300,7 +293,7 @@ section {
 }
 
 #submit-wrap a {
-  font-size: 20pt;
+  font-size: 16pt;
   padding: 12px;
   margin-left: 16px;
   width: 300px;
@@ -317,7 +310,7 @@ section {
 */
 #ddb {
   width: 100%;
-  font-size: 16pt;
+  font-size: 12pt;
   padding-bottom: 104px;
 }
 
