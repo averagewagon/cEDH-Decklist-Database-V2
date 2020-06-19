@@ -224,8 +224,20 @@ aside li span {
   opacity: 0.3;
 }
 
+.color-inactive:hover {
+  opacity: 0.6;
+}
+
 #advertisement {
   display: none;
+}
+
+.filter-active {
+  background-color: var(--backdrop-color);
+}
+
+.filter-inactive:hover {
+  background-color: var(--canvas-color);
 }
 
 /*
