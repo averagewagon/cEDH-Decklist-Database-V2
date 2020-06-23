@@ -55,10 +55,12 @@ a {
   text-align: center;
   border-radius: 2px;
   cursor: pointer;
+  transition: 0.4s;
   background-color: var(--backdrop-color);
 }
 
 .btn:hover {
+  transition: 0.1s;
   background-color: var(--darker);
 }
 
@@ -230,6 +232,7 @@ aside li span {
 
 .color-inactive, .color-active {
   cursor: pointer;
+  transition: 0.4s;
 }
 
 .color-inactive {
@@ -237,6 +240,7 @@ aside li span {
 }
 
 .color-inactive:hover {
+transition: 0.1s;
   opacity: 0.6;
 }
 
@@ -255,7 +259,12 @@ aside li span {
   background-color: var(--backdrop-color);
 }
 
+.filter-inactive {
+  transition: 0.4s;
+}
+
 .filter-inactive:hover {
+  transition: 0.1s;
   background-color: var(--canvas-color);
 }
 
@@ -289,9 +298,11 @@ section {
   border: 0;
   border-radius: 2px;
   width: 350px;
+  transition: 0.4s;
 }
 
 #db-select:hover {
+  transition: 0.1s;
   background-color: var(--darker);
 }
 
