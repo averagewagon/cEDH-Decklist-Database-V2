@@ -60,7 +60,7 @@ a {
 }
 
 .btn:hover {
-  transition: 0.1s;
+  transition: 0.0s;
   background-color: var(--darker);
 }
 
@@ -240,7 +240,7 @@ aside li span {
 }
 
 .color-inactive:hover {
-transition: 0.1s;
+transition: 0.0s;
   opacity: 0.6;
 }
 
@@ -264,7 +264,7 @@ transition: 0.1s;
 }
 
 .filter-inactive:hover {
-  transition: 0.1s;
+  transition: 0.0s;
   background-color: var(--canvas-color);
 }
 
@@ -302,7 +302,7 @@ section {
 }
 
 #db-select:hover {
-  transition: 0.1s;
+  transition: 0.0s;
   background-color: var(--darker);
 }
 
