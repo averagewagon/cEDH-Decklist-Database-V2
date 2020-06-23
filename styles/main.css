@@ -332,7 +332,7 @@ section {
 #ddb {
   width: 100%;
   font-size: 12pt;
-  padding-bottom: 104px;
+  padding-bottom: 32px;
 }
 
 #ddb td {
@@ -341,4 +341,14 @@ section {
 
 td, th {
   border-bottom: 1px solid white;
+}
+
+section {
+  padding-bottom: 104px;
+}
+
+#copyright {
+  color: lightgray;
+  font-size: 10pt;
+  padding-bottom: 16px;
 }

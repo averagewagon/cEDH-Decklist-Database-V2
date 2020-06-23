@@ -325,7 +325,7 @@ aside li span {
 #ddb {
   width: 100%;
   font-size: 12pt;
-  padding-bottom: 104px;
+  padding-bottom: 32px;
 }
 
 #ddb td {
@@ -334,6 +334,14 @@ aside li span {
 
 td, th {
   border-bottom: 1px solid white;
+}
+
+section {
+  padding-bottom: 104px;
+}
+
+#copyright {
+  text-align: center;
 }
 
 /*
